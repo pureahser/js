@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.立即执行函数:不需要调用，立马能够自己执行的函数
+        function fn() {
+            console.log(1);
+        }
+        fn();
+        //2.写法
+        //(function() {})()   或者    (function(){}());     在最外层加小括号让函数内部先执行，否则将会报错
+        (function() {console.log(2);}) ();       //后面的小括号看做调用函数
+        (function(a,b) {console.log(a + b);}) (1,2);    //后面的小括号可以看做是调用函数
+        (function() {console.log(4);} ());
+        (function(c,d) {console.log(c * d);} (2,3));
+        //3.立即执行函数的最大作用是 独立创建了一个作用域，里面所有变量都是局部变量，不会有命名冲突的情况
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 全局作用域
+        var num = 10;
+        console.log(num);
+        // 局部作用域
+        function newNum() {
+            var num = 99;
+            console.log(num);
+        }
+        newNum();
+
+        //全局变量，在全局作用域下的变量,全局可使用
+        //如果在函数内部 没有声明直接赋值的变量也属于全局变量
+        var num = 10; //num是全局变量
+        console.log(num);
+
+        function fn() {
+            console.log(num);
+        }
+        fn();
+
+        //局部变量，只能在函数内部使用
+        //注意： 函数形参也可以看做局部变量
+        function fn( ){
+            var num1 = 88;  //num1是局部变量
+            num2 = 20;
+        }
+        fun();
+        
+        //全局变量只有浏览器关闭才销毁，比较占内存资源
+        //局部变量，当程序执行完毕就立即销毁，较为节约内存
+
+        //块级作用域 {}   if {} for {}
+
+        //内部函数访问外部函数的变量采用链式查找的方式，来决定去哪个值
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

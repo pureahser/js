@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //常用键盘事件
+        //1. keyup 按键弹起的时候触发
+        document.addEventListener('keyup',function(e) {
+            console.log('按键弹起');
+        })
+        //2. keydown 按键按下时触发     按下不松开一直触发 比press优先执行
+        document.onkeydown = function() {
+            console.log('按键按下了');
+        }
+        //3. keypress 按键按下的时候触发    按下不松开一直触发  不识别功能键如ctrl、shift等
+        document.onkeypress = function() {
+            console.log('按键按下');
+        }
+
+        //打印按键相应ASCII码值
+        document.addEventListener('keyup',function(e) {
+            console.log(e.keyCode);
+        })
+        document.addEventListener('keypress',function(e) {
+            console.log(e.keyCode);
+            if (e.keyCode === 65) {
+                alert('按对了');
+            } else {
+                alert('请按大写A');
+            }
+        })
+        //1. keyup 和keydown事件不区分字母大小写  a和A得到的都是65
+        //2. keypress 区分大小写        
+    </script>
+</body>
+</html>

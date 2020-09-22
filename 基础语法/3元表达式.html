@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 条件表达式?表达式1:表达式2
+        //类似简化版的if else
+
+        // var num = 10;
+        // var result = num > 5 ? '是的' :'不是的'
+
+        // var time = prompt('输入一个0~59的数字')
+        // var result = time < 10 ? '0' + time : time
+
+
+        // switch 也能实现多选1
+        // 利用表达式的值和case后面的值依次匹配，没有匹配上，那么执行default里面的语句
+        // switch (表达式) {
+        // case value1:执行语句1;break;
+        // case value2:执行语句2;break; 
+        // default:执行最后的语句;}
+        
+
+        //value值要与case 全等才行；不书写break进行打断运算将会继续进行计算
+        // 在值是范围性时使用if else if比较合适，反之值是固定值的时候精确搜索用switch
+        // 分支少的时候用if else if ,反之用switch
+
+        // var num1 = prompt('请输入水果名称')
+        // switch (num1) {
+        //     case '苹果':
+        //     alert('5块一斤');
+        //     break;
+        //     case '生梨':
+        //     alert('6块一斤');
+        //     break;
+        //     default:
+        //     alert('查询不到此水果');
+        // }
+
+        var num2 = prompt('输入值1')
+        var num3 = prompt('输入值2')
+        var result1 = num2 > num3 ? num2 : num3
+        alert(result1)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

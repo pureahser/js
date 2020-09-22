@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .father {
+            /* position: relative; */
+            width: 200px;
+            height: 200px;
+            margin: 100px;
+            background-color: #999999;
+        }
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+            margin-left: 45px;
+        }
+        .w {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(241, 225, 154);
+            margin: 0 auto 200px;
+            padding: 20px;
+            border: 5px solid sandybrown;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <div class="w"></div>
+    <script>
+        // offset 系列  获取当前浏览器状态下的动态宽高
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        //可以得到元素的偏移 位置 返回不带单位的数值
+        //可以得到元素大小，宽高
+        console.log(father.offsetTop);
+        console.log(son.offsetLeft);
+        //在父元素没有定位的情况下，得到的子元素的偏移量是基于body
+
+        //可以得到元素大小 宽高
+        //包含width、padding、border，给全局添加 border-box 就解决问题了
+        var w = document.querySelector('.w');
+        console.log(w.offsetWidth);
+        console.log(w.offsetHeight);
+        //3.返回有定位的父级 ，没有则返回body
+        console.log(son.offsetParent);      //返回父级元素，需父级定位
+        console.log(son.parentNode);        //返回父级节点，无需父级有定位
+
+        //offset与style的区别
+        // offset可以得到任意样式表中的样式值
+        // offset系列获得的数值是没有单位的
+        // offsetWidth 包含padding+border+width
+        // offsetWidth 等属性是只读属性，只能获取不能赋值
+        // 想要获取元素大小位置用offset较为合适
+        // style只能得到行内样式表中的样式值
+        // style.width获得的是带有单位的字符串
+        // style.width获得不包含padding和border的值
+        // style.width是可读写属性，可以获取可以赋值
+        //想要给元素赋值的时候用style修改
+
+        //鼠标点击获取位置信息
+        son.addEventListener('click',function(e) {
+            var w = e.pageX - son.offsetWidth;
+            var h = e.pageY - son.offsetHeight;
+            console.log(w);
+            console.log(h);
+        })
+    </script>
+</body>
+</html>

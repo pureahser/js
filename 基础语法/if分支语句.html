@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //  if(表达式) {执行语句}；
+        //  if里的表达式结果为true,则执行大括号内的语句，反之结果为false则不执行大括号内的语句，执行后面代码。
+        // var age = prompt('请输入年龄')
+        // if(age>=18){alert('恭喜您已成年')}
+        // alert('请等待成年')
+
+
+        //  if (条件表达式) {执行语句1} else {执行语句2}
+        //  表达式为true，执行语句1，反之则执行语句2。2选1执行
+        // var age1 = prompt('请输入年龄')
+        // if(age1>=18){
+        //     alert('恭喜成年')
+        //     }   else {
+        //         alert('请等成年')
+        //     }
+
+        // var year = prompt('请输入年份')
+        // var result = year%4
+        // console.log(result);
+        // if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        //     alert('今年是闰年')
+        // }else {
+        //     alert('今年是平年')
+        // }
+
+        // var id = prompt('请输入用户名')
+        // if(id==='pureasher') {
+        //     alert('用户名正确')
+        // } else {
+        //     alert('用户名错误')
+        // }
+
+        
+        // 从上往下依次判断能否满足执行，多选1的过程,如果都不满足则最后执行else中的语句
+        //  if (条件表达式1) {语句1} 
+        // else if (条件表达式2) {语句2} 
+        // else if (条件表达式3) {语句3}
+        // else {}
+
+
+        var score = prompt('请输入成绩');    //要求越高放越上面
+        if (score >= 90) {
+            alert('秀');
+        } else if (score >= 70) {
+            alert('中');
+        } else if (score >= 60) {
+            alert('合格');
+        } else {
+            alert('不及格');
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

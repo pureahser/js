@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var obj = {
+        //     name: 'XXX',
+        //     age: 18,
+        //     sex: '男'
+        // }
+        // console.log(obj.name);
+        // console.log(obj.age);
+        // console.log(obj.sex);
+
+        // //for in 遍历对象格式
+        for (变量 in 对象) { }；
+        for (var k in obj) {
+            console.log(k);  //k变量 输出 得到的是属性名
+            console.log(obj[k]);  //obj[k]  得到是 属性值
+        }
+
+        //练习1、创建对象
+        var computer = {
+            color:'black',
+            weight: '10kg',
+            brand: 'DELL',
+            model: 'a18588',
+            watch: function() {console.log('movie');},
+            listen: function() {console.log('song');},
+            play: function () {console.log('game');},
+            tap: function () {console.log('data');}
+        }
+
+        var btn = {
+            background_color: '#FFFFFF',
+            weight: '104px',
+            height: "56px",
+            click: function() {console.log('hide');}
+        }
+
+        var car = {
+            weight:'1000KG',
+            color:'red',
+            brand: 'VolkSwagen',
+            ZR: function() {console.log('zr');},
+            LH: function() {console.log('lh');},
+            GT: function() {console.log('gt');}
+        }
+        
+        // function PC(color,weight,brand,model) {
+        //     this.color = color;
+        //     this.weight = weight;
+        //     this.brand = brand;
+        //     this.model = model;
+        //     this.watch = function(movie) {          //此处疑问function中的变量是否写进构造函数的形参中
+        //         console.log(movie);
+        //     }
+        // }
+        // var PC1= new PC('red','5kg','DELL','a8612');
+        // console.log(PC1.);
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

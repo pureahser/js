@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .body {
+            position: relative;
+        }
+
+        .container {
+            width: 100vw;
+            text-align: center;
+            font: 900 64px/72px 'PingFang SC';
+        }
+
+        .slider-bar {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            /* background-color: #fff; */
+            height: 200px;
+            width: 300px;
+            right: 0;
+            top: 300px;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .w {
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .header {
+            height: 900px;
+            background-color: rebeccapurple;
+        }
+
+        .banner {
+            height: 400px;
+            background-color: khaki;
+        }
+
+        .main {
+            height: 1200px;
+            background-color: yellowgreen;
+        }
+
+        .goBack {
+            display: none;
+            margin: 8px;
+            padding: 8px;
+        }
+
+        p {
+            display: none;
+            margin: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .goBack:hover,
+        p:hover {
+            color: #fff;
+            background-color: wheat;
+        }
+    </style>
+    <script src="animateT.js"></script>
+</head>
+
+<body>
+    <!-- <div>
+        内容
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        //scroll可得到元素大小(包括溢出距离)、滚动距离(溢出距离)
+        console.log(div.scrollHeight);
+        console.log(div.scrollWidth);
+        //scroll滚动事件，当我们滚动条发生变化会触发的条件
+        div.addEventListener('scroll',function() {
+            console.log(div.scrollTop);
+        })
+
+        //有DTD兼容性问题 ie9+支持
+    </script> -->
+
+    <div class="container">
+        <div class="slider-bar">
+            <span class="goBack">GOTOP</span>
+            <p></p>
+        </div>
+        <div class="header w">HEAD</div>
+        <div class="banner w">BANNER</div>
+        <div class="main w">MAIN</div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var body = document.querySelector('body');
+            var sliderBar = document.querySelector('.slider-bar');
+            var header = document.querySelector('.header');
+            var banner = document.querySelector('.banner');
+            var main = document.querySelector('.main');
+            var span = document.querySelector('span');
+            var ws = document.querySelectorAll('.w');
+            var p = document.querySelector('p');
+            //在滚动操作前获取元素与页面顶部间的距离，因为滚动后这个值将产生变化
+            var sliderBarTop = sliderBar.offsetTop;
+            var bannerTop = banner.offsetTop;
+            var mainTop = main.offsetTop;
+            document.addEventListener('scroll', function () {
+                if (window.pageYOffset >= sliderBarTop) {
+                    sliderBar.style.position = 'fixed';
+                    sliderBar.style.top = '0px';
+                    span.style.display = 'block';
+                } else {
+                    sliderBar.style.position = 'absolute';
+                    sliderBar.style.top = sliderBarTop + 'px';
+                    span.style.display = 'none';
+                }
+                if (window.pageYOffset >= mainTop) {
+                    p.style.display = 'block';
+                    p.innerHTML = ws[2].innerHTML;
+                } else if (window.pageYOffset >= bannerTop) {
+                    p.style.display = 'block';
+                    p.innerHTML = ws[1].innerHTML
+                } else {
+                    p.style.display = 'none';
+                }
+            })
+            // console.log(window.pageYOffset);
+            // console.log(body.offsetTop);
+            span.addEventListener('click', function () {
+                // window.scroll(0,0);
+                animateT(window,0);
+            })
+        })
+    </script>
+</body>
+
+</html>

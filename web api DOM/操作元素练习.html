@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 0 ;
+            padding: 0 0 ;
+        }
+        .all {
+            width: 7vw;
+        }
+        .bar {
+            display: flex;
+            padding: 12px 24px;
+            width: 65px;
+        }
+        .bar1 {
+            background: blue;
+        }
+        img {
+            height: 20px;
+        }
+        #group {
+            display: none;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="bar" id="top">
+            <div class="text">工具</div>
+            <label for="">
+                <img src="../../杂图/1/10255133_150520583563_2.jpg" alt="" id="pic">
+            </label>
+        </div>
+        <div id="group">
+            <div class="bar">
+                <div class="text">工具</div>
+                <label for="">
+                    <img src="../../杂图/1/10255133_150520583563_2.jpg" alt="">
+                </label>
+            </div>
+            <div class="bar">
+                <div class="text">工具</div>
+                <label for="">
+                    <img src="../../杂图/1/10255133_150520583563_2.jpg" alt="">
+                </label>
+            </div>
+            <div class="bar">
+                <div class="text">工具</div>
+                <label for="">
+                    <img src="../../杂图/1/10255133_150520583563_2.jpg" alt="">
+                </label>
+            </div>
+            <div class="bar">
+                <div class="text">工具</div>
+                <label for="">
+                    <img src="../../杂图/1/10255133_150520583563_2.jpg" alt="">
+                </label>
+            </div>
+        </div>
+    </div>
+    <script>
+        var all = document.querySelector('.all')
+        var top = document.getElementById('top');
+        var pic = document.getElementById('pic');
+        var group = document.getElementById('group');
+        // var bar = document.querySelectorAll('.bar');
+        var bar = document.getElementsByClassName('bar');
+        console.log(bar);
+        pic.onmouseover = function () {
+            group.style.display = 'flex';
+        }
+        all.onmouseleave = function () {
+            group.style.display = 'none';
+        }
+        for (var i = 0; i < bar.length ; i++) {
+            bar[i].onmouseover = function() {
+                for (var i = 0; i < bar.length ; i++) {
+                    bar[i].className = 'bar';
+                }
+                this.className = 'bar bar1';
+            }
+        }
+        
+        // bars.onmouseover = function () {
+        //     this.className = 'bar bar1';
+        // }
+        // bars.onmouseleave = function () {
+        //     this.className = 'bar';
+        // }
+    </script>
+</body>
+</html>

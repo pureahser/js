@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button class="up">发布</button>
+    <!-- <button class="dele">删除</button> -->
+    <ul>
+    </ul>
+    <script>
+        var btn1 = document.querySelector('.up');
+        var text = document.querySelector('textarea')
+        var ul = document.querySelector('ul');
+        btn1.onclick = function() {
+            if (text.value == '') {
+                alert('无内容');
+            } else {
+                var li = document.createElement('li');
+                li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+                ul.insertBefore(li,ul.children[0]);
+                var as = document.querySelectorAll('a');
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function() {
+                    ul.removeChild(this.parentNode);
+                    //要移除当前a的父级li，如要移除li则需要其父级ul
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button></button>
+    <script>
+        //this 在全局作用域或普通函数中指向全局对象window(定时器也是)
+        setTimeout(function() {
+            console.log(this);
+        },1000);
+
+        //方法中的this指向调用this的
+        var o = {
+            sayHi: function() {
+                console.log(this);      //this指向o
+            }
+        }
+        o.sayHi();
+        var btn = document.querySelector('button');
+        btn.addEventListener('click',function() {       //this 指向btn
+            console.log(this);
+        })
+        //构造函数中this指向构造函数的实例,调用构造函数的
+        function Fun() {
+            console.log(this);          //this 指向fun
+        }
+        var fun = new Fun();
+    </script>
+</body>
+</html>

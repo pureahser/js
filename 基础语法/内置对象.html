@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //内置对象提供  一些常用的的基本功能
+        //常见内置对象  Math Date Array String
+
+        // //Math
+        // console.log(Math.PI);   //一个属性 圆周率
+        // console.log(Math.max(1,8,17));     //求最大值
+        // console.log(Math.max(1,99,'pure'));     //NaN
+        // console.log(Math.max ();    //-infinity
+
+        //绝对值
+        console.log(Math.abs(1));       //1
+        console.log(Math.abs(-1));      //1
+        console.log(Math.abs('-1'));    //1     这里会有隐式转换将字符型装换为数字型
+        
+        //往小了取整
+        console.log(Math.floor(1.1));   //1
+        console.log(Math.floor(1.8));   //1
+
+        //往大了取整
+        console.log(Math.ceil(1.1));    //2
+        console.log(Math.ceil(1.8));    //2
+
+        //四舍五入取整
+        console.log(Math.round(1.1));   //1
+        console.log(Math.round(1.8));   //2
+        console.log(Math.round(-1.1));  //-1
+        console.log(Math.round(-1.8));  //-2
+        console.log(Math.round(-1.5));  //-1    四舍五入在 .5上有特殊，由于是往大了取，所以负的.5往上取
+        
+        //Math随机数
+        // 返回随机的小数  0=< x < 1
+        console.log(Math.random());
+        // 想得到两个数间的随机整数 并且 包含这两个数
+
+        //floor是向下取整，所以如果想包含max就得计算比max大1的数
+        //实现min则要在计算结果后加上min，否则最小值将是0
+        // Math.floor(Math.random()*(max - min + 1)) + min;
+        function getRandom(min,max) {
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        console.log(getRandom(5,55));
+
+        //随机点名
+        var arr = ['X','Y','Z','XX','YY','ZZ'];
+        console.log(arr[getRandom(0,arr.length-1)]);
+
+        //自己封装对象
+        var Math1 = {
+            PI : 3.141592653,                    //此处是冒号不是等号
+            max:function () {
+                var max = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (arguments[i] > max) {
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            },                                          //此处两个方法之间要有逗号
+            min:function () {
+                var min = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if(arguments[i]<min) {
+                        min = arguments[i]
+                    }
+                }
+                return min;
+            }
+        }
+        console.log(Math1.PI);
+        console.log(Math1.max(1,5,9));
+        console.log(Math1.min(5,36,9,7));   
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

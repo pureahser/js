@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            /* margin-top: 30px; */
+            color: #999999;
+            outline: none;
+        }
+        .large {
+            /* position: absolute; */
+            display: none;
+            height: 21px;
+            width: 171px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="large"></div>
+    <input type="text" value="快递单号">
+    <script>
+        var body = document.body;
+        var input = document.querySelector('input');
+        var large = document.querySelector('.large');
+        document.addEventListener('keyup',function(e) {
+            if(e.keyCode === 83) {
+                input.focus();
+            }
+        })
+        input.addEventListener('focus',function() {
+            if (input.value == '快递单号' || input.value =='') {
+                large.style.display = 'none';
+            } else {
+                large.style.display = 'block';
+                large.innerHTML = input.value;
+            }
+            if (input.value == '快递单号') {
+                input.value = '';
+                input.style.color = '#000';
+            }
+            input.addEventListener('keyup',function(e) {
+            if (input.value == '快递单号' || input.value =='') {
+                large.style.display = 'none';
+            } else {
+                large.style.display = 'block';
+                large.innerHTML = input.value;
+            }
+        })
+        })
+        input.addEventListener('blur',function() {
+            if (input.value == '') {
+                input.value = '快递单号';
+                input.style.color = '#999';
+            }
+            large.style.display = 'none';
+        })
+    </script>
+</body>
+</html>

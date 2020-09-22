@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ad {
+            width: 200px;
+            height: 200px;
+            background-color: #999;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad">点击不会消失</div>
+    <span class="hour">1</span>
+    <span class="minute">2</span>
+    <span class="second">3</span>
+    <button>点击获取验证码</button>
+    <script>
+        //1. setTimeout
+        //语法规范:     window.setTimeout(调用函数，延时时间);
+        //只调用一次
+        //1. window在调用时可省略
+        //2. 延时时间单位为毫秒，毫秒单位可省略，如果省略默认为0(立马执行)
+        //3. 调用函数可以直接写函数 也可以写函数名
+        //4. 页面中一般有许多定时器，通常需要给定时器加标识符(起名)
+        setTimeout(function() {
+            console.log('两秒到了');
+        }, 2000);
+        function callback() {
+           console.log('时间到了');
+        }
+        //以下两种调用方式
+        var time1 = setTimeout(callback, 3000);
+        var time2 = setTimeout('callback()',10000);
+
+        //回调函数 事干完了再回头掉调用函数
+        var ad = document.querySelector('.ad');
+        function callback_ad() {
+            ad.style.display = 'none';
+        }
+        var time3 = setTimeout(callback_ad,4000);
+
+        //停止定时器
+        //window.clearTimeout(timeout ID)
+        ad.addEventListener('click', function() {
+            clearTimeout(time3);
+        })
+
+        //2.setInterval()
+        //语法规范      window.setInterval(回调函数,[间隔毫秒数]);
+        //经过间隔时间反复调用同一函数
+        setInterval(function() {
+            console.log('两秒过去了');
+        }, 2000);   
+
+        //倒计时表盘
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        var inputTime = +new Date('2020-8-28 13:00:00');
+        var timer = null;       //变量不能放方法内，要做全局变量且赋值空
+            function countDown() {
+            var nowTime = +new Date();      //此处加号是隐式转换数字型
+            var cTime = (inputTime-nowTime) / 1000;
+            var h = parseInt(cTime / 60 / 60 % 24);
+            h = h < 10? '0'+h : h;
+            hour.innerHTML = h;
+            var m = parseInt(cTime / 60 % 60);
+            m = m < 10? '0'+m : m;
+            minute.innerHTML = m;
+            var s = parseInt(cTime % 60)
+            s = s < 10? '0'+s : s;
+            second.innerHTML = s;
+        }
+        countDown();        //先调用一次，防止第一次刷新页面有空白
+        timer = setInterval(countDown,1000);
+        document.addEventListener('click',function(e) {     //报错
+            timer ? clearInterval(timer) : timer = setInterval(countDown,1000);
+        })
+
+        //短信验证码60秒获取按钮  //报错
+        var btn = document.querySelector('btn');
+        var time_N = null;
+        btn.addEventListener('click',function() {
+            btn.disabled = 'true';
+            e.preventDefault();
+            time_N = +new Date();
+            console.log(time_N);
+        })
+        
+    </script>
+</body>
+</html>

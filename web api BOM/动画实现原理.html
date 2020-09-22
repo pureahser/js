@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        body {
+            height: 100vh;
+            width: 100vw;
+        }
+        button {
+            position: fixed;
+        }
+        #start {
+            left: 0;
+        }
+        #down {
+            left: 50px;
+        }
+        div {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 100px;
+            height: 100px;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <button id="start">开始按钮</button>
+    <button id="down">结束按钮</button>
+    <div></div>
+    <script>
+        //动画原理
+        //1.获取盒子在当前位置
+        //2.让盒子在当前位置加上1个移动距离
+        //3.利用定时器重复这个操作
+        //4.添加结束定时器条件
+        //5.注意此元素需要添加定位，才能使用element.style.left
+        var body = document.querySelector('body');
+        var start = document.querySelector('#start');
+        var down = document.querySelector('#down');
+        var div =  document.querySelector('div');
+        start.addEventListener('click',function() {
+            start.disable = true;
+            var timeR = setInterval(run ,30);
+            function run() {
+                div.style.left = div.offsetLeft + 1 + 'px';
+                div.style.top = div.offsetTop + 1 + 'px';
+            }
+            down.addEventListener('click',function() {
+            clearInterval(timeR);
+        })
+        })
+    </script>
+</body>
+</html>

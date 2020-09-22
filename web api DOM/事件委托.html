@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>我是子元素节点</li>
+        <li>我是子元素节点</li>
+        <li>我是子元素节点</li>
+        <li>我是子元素节点</li>
+        <li>我是子元素节点</li>
+    </ul>
+    <script>
+        //事件委托原理
+        //用父元素节点来注册点击事件，然后用事件对象的target来找到当前点击的子元素节点
+        //利用子元素节点的点击触发冒泡事件，冒泡到的父元素节点有注册事件，就会触发事件监听器。
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click',function (e) {
+            // alert('我是子元素节点的弹框');
+            e.target.style.backgroundColor = 'red';
+        })
+    </script>
+</body>
+</html>

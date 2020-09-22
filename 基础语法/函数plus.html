@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // arguments 只有每个函数才有内置好的
+        function fn() {
+            console.log(arguments); // 里面储存了所有传递过来的实参
+
+            // 可以按数组方式遍历arguments
+            for (var i = 0 ; i < arguments.length ; i++) {
+                console.log(arguments[i]);
+            }
+        }
+        fn(1,2,3);
+        // 伪数组不是真正的数组
+        // 具有数组的 length 属性
+        // 按照索引方式存储 （也有从0开始的索引）
+        // 它没有真正数组的一些方法   pop()   push()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

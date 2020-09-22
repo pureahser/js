@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //创建数组的两种方式
+        //1、利用数组字面量
+        var arr = [1,2,3];
+        console.log(arr[0]);
+        //2、利用new Array()
+        //var arr1 = new Array();  //创建了一个空的数组
+        //var arr1 = new Array(2);   //这个2表示数组长度为2，里面有2个空的数组元素
+        var arr1 = new Array(2,3);   //等价于[2,3] 这样表示 里面有2个数组元素 是2和3
+        console.log(arr1);
+
+        //检测是否为数组
+        //(1) instanceof 运算符 用来检测是否为数组
+        var arr = [];
+        var obj = {};
+        console.log(arr instanceof Array);
+        console.log(obj instanceof Array);
+
+        //翻转数组检测
+        function reverse(arr) {
+            if (arr instanceof Array) {
+                var newArr = [];
+                for (var i =arr.length-1; i >=0; i--){
+                    newArr[newArr.length] = arr[i];
+                }
+                return newArr;
+            } else {
+                return "false";
+            }
+        }
+        var arr1 = reverse(1,2,3);
+        var arr2 = reverse([1,2,3]);
+        console.log(arr1);
+        console.log(arr2);
+        //1、通过instanceof 运算符，检测是否为数组
+        //2、Array.isArray(参数);   H5新增参数，ie9+支持
+        console.log(Array.isArray(arr1));     //false
+        console.log(Array.isArray(arr2));     //true
+
+
+        //添加删除数组对象
+        //1、 push() 在数组的末尾 添加一个或多个数组元素
+        var arr = [1,2,3];
+        arr.push(4, 'XXX');
+        console.log(arr);
+        //push 是可以给数组追加新元素的
+        //push() 参数直接写 数组元素就可以了
+        //push完毕之后，返回值是 新数组的长度
+        //原数组也会发生变化
+        
+        //2、 unshift('red'); 在数组开头 添加一个或多个数组元素
+        arr.unshift('red', 'purple');
+        console.log(arr);
+        //unshift完毕后，返回值是 新数组的长度
+
+        //删除数组元素
+        console.log(arr.pop());
+        console.log(arr);
+        //pop每次只能删除一个元素
+        //pop没有参数
+        //pop完毕后，返回结果是删除元素
+        //原数组也有变化
+
+        //一个包含工资的数组[1500,1200,2000,2100,2200],将超过2000的删除，剩余的放入新数组
+        var arr = [1500,1200,2000,2100,2200];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i]<2000) {
+                newArr.push (arr[i]);          //用push往新数组添加符合条件的元素
+            }
+        }
+        console.log(newArr);
+
+        //数组排序
+        //1、翻转数组
+        var arr = [1,2,3];
+        arr.reverse();
+        console.log(arr);
+        //2、冒泡排序
+        var arr1 = [13,4,77,1,7];            //sort排序中非个位数的先看左边数字的排序，再看右边的排序
+        arr1.sort(function(a,b) {
+            return a - b;                    // 升序顺序排列
+            return b - a;                    // 降序顺序排列
+        });
+        console.log(arr1);
+
+        // 查找数组元素索引号
+        // 数组中两个元素相同，只返回第一个满足条件的索引号
+        var arr = ['X', 'Y','Z','X'];
+        console.log(arr.indexOf('X'));    1
+        var arr = ['X','Y','P','Z','P']
+        console.log(arr.lastIndexOf('P'));  4  //反过来查找，但是序号与正序相同
+        console.log(arr.indexOf('U'));   -1    //当查询的数组没有相符元素时显示-1
+
+        //数组转换为字符串
+        // toString() 将数组转换为字符串
+        var arr =[1,2,3];
+        console.log(arr.toString());  //1,2,3
+        // join(分隔符)
+        var arr1 = ['X','Y','Z'];
+        console.log(arr1.join('-'));    //X-Y-Z
+        console.log(arr1.join('&'));    //X&Y&Z
+
+        //数组去重
+        function unique(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) == 1) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr; 
+        }
+        var arr1 = unique(['X','Y','P','Z','P','X', 'Y','Z','X']);
+        console.log(arr1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

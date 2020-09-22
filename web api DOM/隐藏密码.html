@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+             width: 400px;
+             border-bottom: 1px solid red;
+             margin: 100px auto;
+        }
+        .box input {
+            width: 370px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+        .box img {
+            position: absolute;
+            height: 24px;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for="">
+            <img src="../../杂图/1/3.png" alt="" id="eye">
+        </label>
+        <input type="password" name="" id="psw">
+    </div>
+    <script>
+        var eye = document.getElementById('eye');
+        var psw = document.getElementById('psw');
+        var flag = 0;                           //这种时候要引入flag开关
+        eye.onclick = function () {
+            if (flag == 0) {
+                this.src = '../../杂图/1/2.png';
+                psw.type = 'text';
+                flag = 1;
+            } else {
+                this.src = '../../杂图/1/3.png';
+                psw.type = 'password';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+</html>

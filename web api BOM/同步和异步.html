@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(1);
+        setTimeout(fn,0);
+        console.log(2);
+        document.onclick = fn;
+
+        //js是单线程，同时间只能做同一件事
+        //同步是程序的执行顺序和任务的排列顺序是一致的、同步的，前一个结束后再执行后一个
+        //异步是长时间的任务将同时执行后面的短任务
+
+        //同步任务放在同一执行栈中
+        //回调函数是js的异步任务
+        //普通事件, click、resize
+        //资源加载, load、error
+        //定时器，包括setInterval、setTimeout
+        //异步任务相关回调函数添加到任务队列中(也称消息队列)
+
+        //执行机制
+        //先执行执行栈中的同步任务
+        //异步进程处理器将识别有没有触发机制，触发后才将其置入任务队列
+        //异步任务（回调函数)放入任务队列中
+        //同步任务全执行完后，将按任务队列中的顺序将异步任务放入执行栈(事件循环/event loop)
+    </script>
+</body>
+</html>

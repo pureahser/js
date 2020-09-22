@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.声明函数
+        // function 函数名(形参) {      //声明函数时括号内及代码中的可变参数命名为形参
+        //     //函数体
+        // }
+        // function sayHi() {
+        //     console.log('HI~~');
+        // }
+        // // function 声明函数的关键字 全部是小写
+        // 函数名一般是动词
+        //函数不调用自己不执行
+        
+        //函数名(实参);     //调用函数的语法规范没有实参也要带小括号
+
+        // //利用函数计算两个数之间的累加和
+        // //1.声明函数
+        // function getSum(X,Y) {
+        //     var sum = 0;
+        //     for (var i = X; i <= Y; i++) {
+        //         sum += i ;
+        //     }
+        //     console.log(sum);       //在函数内部做输出没有意义要用return将最终值返回给调用者
+        // }
+        // getSum(1,2);
+
+        // //如果实参个数多于形参个数，取形参个数
+        // //如果实参个数小于形参个数，传输值就是undefined,结果急速NaN
+
+        // //函数返回值
+        // function 函数名() {
+        //     return 需要返回的结果;
+        // }
+        // 函数名();                   //函数只是实现某种功能，最终的结果需要返回给函数的调用者函数名()   
+        //                             //return 将return后面的结果返回给函数的调用者
+        // console.log(函数名());       //函数名() = 需要返回的结果
+
+        //求两个数最大值
+        // function getMax(X,Y) {
+        //     // if(X>Y) {
+        //     //     return X;
+        //     // }else { 
+        //     //     return Y;
+        //     // }
+        //     return X > Y ? X : Y; 
+        // }
+        // console.log(getMax(1,2));
+
+        //求数组中的最大值
+        // function getMax(X) {
+        //     var max = X[0];          //这里需要一个承载比大小后胜出者的变量，可将其初始设为数组中第一个元素
+        //     for (var i = 1; i < X.length ; i++) {
+        //         if(X[i] > max ) {
+        //             max = X[i];
+        //         }
+        //     }
+        //     return max ;            //最终值应在最后输出
+        // }
+        // var re = getMax([5,2,99,101,67,77]);   //用一个变量来接收输出值方便之后使用
+        // console.log(re);
+
+        // return 执行后 ，后面的代码都不执行
+        // return num1， num2；       // return 后有同时有多个值 ，返回结果是最后一个值
+
+        //求任意两束的加减乘除结果
+        // function getResult(num1,num2) {
+        //     return [num1 + num2, num1 - num2, num1 * num2, num1 / num2];
+        // }
+        // var re = getResult(55,88);
+        // console.log(re);
+
+        //函数如果没有return 则返回值为undefined
+
+        // break： 结束当前循环体 （for，while）
+        // continue： 跳出本次循环继续下次
+        // return： 不仅跳出循环，害能返回后面的值，同时结束当前函数代码
+
+        //函数声明方式的两种
+        // 1   利用函数关键字自定义函数(命名函数)
+        //     function fn() {
+
+        // };
+
+        // 2   函数表达式
+        //     var 变量名 =function(){
+
+        // };
+        //调用方式   变量名();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

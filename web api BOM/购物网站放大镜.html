@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pic {
+            position: relative;
+        }
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #fede4f;
+            opacity: .5;
+            cursor: move;
+        }
+        .large {
+            display: none;
+            position: absolute;
+            left: 400px;
+            top: 0px;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            /* background-color: red; */
+        }
+        .large #img2 {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="pic">
+        <img src="../../杂图/1/微信图片_20200509160358.png" alt="" id="img1">
+        <div class="mask"></div>
+        <div class="large">
+            <img src="../../杂图/1/微信图片_20200509160358.png" alt="" id="img2">
+        </div>
+    </div>
+    <script>
+        var pic = document.querySelector('.pic');
+        var mask = document.querySelector('.mask');
+        var img1 = document.querySelector('#img1');
+        var img2 = document.querySelector('#img2');
+        var large = document.querySelector('.large');
+        img1.addEventListener('mouseover',function() {
+            // mask.style.left = e.pageX - 100 + 'px';
+            // mask.style.top = e.pageY - 100 + 'px';
+            mask.style.display = 'block';
+            large.style.display = 'block';
+        })
+        img1.addEventListener('mouseout', function() {
+            mask.style.display = 'none';
+            large.style.display = 'none';
+        })
+        img1.addEventListener('mousemove',function(e) {
+            //获取鼠标再盒子内的坐标
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+            //黄色遮挡层跟随鼠标
+            //mask 移动距离
+            var maskX = x - mask.offsetWidth / 2;
+            var maskY = y - mask.offsetHeight / 2;
+            var img1W = img1.offsetWidth - mask.offsetWidth;
+            var img1Y = img1.offsetHeight - mask.offsetHeight;
+            mask.style.left = maskX +'px';
+            mask.style.top = maskY +'px';
+            //如果小于0，就让他停在0的位置
+            if(maskX <= 0 ) {
+                mask.style.left = 0 + 'px';
+            }else if(maskX >= img1W) {
+                mask.style.left = img1W + 'px';
+            }
+            if(maskY <= 0 ) {
+                mask.style.top = 0 + 'px';
+            }else if(maskY >= img1Y) {
+                mask.style.top = img1W + 'px';
+            }
+            var img2W = img2.offsetWidth - mask.offsetWidth;
+            var img2Y = img2.offsetHeight - mask.offsetHeight;
+            img2W = maskX * img2W / img1W;
+            img2H= maskY * img2Y / img1W;
+            img2.style.left = -img2W + 'px';
+            img2.style.top = -img2Y + 'px';
+        })
+    </script>
+</body>
+</html>

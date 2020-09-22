@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dad {
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: khaki;
+        }
+    </style>
+</head>
+<body>
+    <div class="dad">
+        <div class="son"></div>
+    </div>
+    <script>
+        var dad = document.querySelector('.dad');
+        var son = document.querySelector('.son');
+        dad.addEventListener('mouseover',function() {       //经过子元素也会重新触发
+            console.log(11);
+        })
+        dad.addEventListener('mouseenter',function() {      //只经过自身盒子触发一次
+            console.log(22);            //mouseenter不会冒泡
+        })
+        //mouseleave 同样不会有冒泡行为
+    </script>
+</body>
+</html>

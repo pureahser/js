@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo" index="1" class="nav"></div>
+    <div data-index ='1'> </div>
+    <script>
+        var div = document.querySelector('div');
+        //1. 获取元素的属性值
+        // element.属性
+        console.log(div.id);
+        // element.getAttribute('属性')
+        //程序员自己添加的属性称为自定义属性
+        console.log(getAttribute('id'));
+        console.log(getAttribute('index'));
+        // index是程序员自行添加的标签属性，用于做分类的属性
+
+        //2.设置元素属性值
+        // element.属性 = '值'
+        div.id = 'test';
+        div.className = ('navs');
+        // element.setAttribute('属性','值'); 主要针对自定义属性
+        div.setAttribute('index',2);
+        div.setAttribute('class','footer');         //此方法也可用 class 修改样式，不是 className
+
+        //3.移除属性 removeAttribute
+        div.removeAttribute('index')
+
+        //H5自定义属性          只能获取data开头的自定义属性
+        // H5规定自定义属性以data-开头赋值
+        div.setAttribute('data-time',20);
+        div.setAttribute('data-list-name',200);
+        console.log(div.getAttribute('data-index'));
+        //H5新增获取自定义属性的方法
+        console.log(div.dataset);
+        //dataset是个自定义属性的集合，将会获得当前标签下的所有自定义属性
+        console.log(div.dataset.index);
+        console.log(div.dataset['index']);
+        //当自定义属性中有多个-连接的单词时，要采取驼峰命名法获取
+        console.log(div.dataset.listName);
+        console.log(div.dataset['listName']);
+    </script>
+</body>
+</html>

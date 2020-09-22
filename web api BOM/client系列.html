@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: yellowgreen;
+            border: 10px solid rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        //clientWidth 宽度   和offsetWidth 最大区别是不包含边框
+        var div = document.querySelector('div');
+        console.log(div.clientWidth);
+        console.log(div.clientLeft);
+        //clientLeft 返回左边框大小
+        //clientTop 返回上边框大小
+    </script>
+</body>
+</html>

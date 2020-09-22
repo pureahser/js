@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        利用节点的父子节点关系获取元素
+        逻辑性更强但兼容稍差
+        节点至少拥有nodeType、nodeName、nodeValue这三个基本属性
+
+        元素节点 nodeType为1
+        属性节点 nodeType为2
+        文本节点 nodeType为3 (文本节点包括文字、空格、换行等)
+
+        节点操作主要操作是元素节点
+     -->
+
+     <div class="box">
+         <span class="QR"></span>
+    </div>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <ol>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+    <script>
+        //1.父节点 parentNode
+        var QR = document.querySelector('.QR');
+        // var box = document.querySelector('.box');
+        console.log(QR.parentNode);         //得到离元素最近的父级节点
+        //DOM 提供的方法 (API) 获取
+        var ul = document.querySelector('ul');
+        var lis = ul.querySelectorAll('li');
+
+        //1.子节点  childNodes 所有的子节点 包含 元素节点 文本节点等
+        console.log(ul.childNodes);
+        //如果想要仅选中所有子节点中的元素节点，则需要遍历判定节点的值
+        //2.children 获取所有的子元素节点   常用
+        console.log(ul.children);
+        //获取第一个子元素节点    IE9+支持
+        console.log(ol.firstElementChild);
+        //获取最后一个子元素节点    IE9+支持
+        console.log(ol.lastElementChild);
+        //无兼容问题的方式
+        console.log(ol.children[0]);     //获取子元素的伪数组中第1个子元素节点
+        console.log(ol.children[ol.children.length - 1]);       //获取最后一个子元素节点
+        
+        //兄弟节点
+        var div = document.querySelector('div');
+        console.log(div.nextSibling);       //下个包含元素节点或文本节点的兄弟节点
+        console.log(div.previousSibling);   //上个
+        //获取下个兄弟元素节点      IE9+支持
+        console.log(div.nextElementSibling);
+        //获取上个兄弟元素节点      IE9+支持
+        console.log(div.previousElementSibling);
+        //无兼容问题方式  封装一个兼容性函数
+        function getNextElementSibling (element) {
+            var el = element;
+            while (el = el.nextSibling) {
+                if (el.nodeType === 1) {        //逐个判定是否为元素节点
+                    return el;
+                }
+            }
+            return null;
+        }
+
+        //创建元素节点
+        var li = document.createElement('li');
+        //添加节点
+        // node.appendChild(child);    //node 父级 child 子级 后面追加元素类似数组中的 push
+        var ul = document.querySelector('ul');
+        ul.appendChild(li);
+        //添加节点
+        // node.insertBefore(child, 指定元素);      //在指定元素前面添加
+        var lili = document.createElement('li');
+        ul.insertBefore(lili,ul.children[0]);
+        //页面中添加一个新元素: 1.创建元素 2.添加元素
+
+        //删除节点
+        var ul = document.querySelector('ul');      //父级节点来删除子集节点
+        ul.removeChild(ul.children[0]);
+
+        //克隆节点
+        var ul = document.querySelector('ul');
+        // node.cloneNode();  括号为空或者为false 是浅拷贝，只复制标签不复制内容
+        // node.cloneNode(true);  括号里为true 是深拷贝，复制标签复制内容
+        var liNew = ul.children[0].cloneNode();
+        ul.appendChild(liNew);
+    </script>
+</body>
+</html>

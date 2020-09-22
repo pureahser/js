@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'andy';
+        console.log(str.length);    //4
+        //对象 才有 属性和方法 复杂数据类型才有 属性和方法
+        //简单数据类型为什么会有 length 属性？
+        //基本包装类型：就是把简单数据类型包装成 复杂数据类型
+        //1、把简单数据类型包装为复杂数据类型
+        var temp = new String('andy');
+        //2、把临时变量值给 str
+        str = temp;
+        //3、销毁这个临时变量
+        temp = null;
+
+        //字符串的不可变
+        //字符串的重新赋值以及重新拼接都将开辟新的空间
+        var str = 'andy';
+        console.log(str);
+        str = 'red';
+        console.log(str);
+        
+        //因为我们字符串的不可变所以不要大量的拼接字符串
+        var str = '';
+        for (var i = 1; i <=100; i++) {
+            str += i;
+        }
+        console.log(str);
+
+        //字符串对象，根据字符返回位置
+        //str.indexOf('要查找的字符',[起始的位置])
+        var str = '你说好世界，世界说你好';
+        console.log(str.indexOf('好'));
+        console.log(str.indexOf('好',3));      // 从索引号是3的位置开始往后查找
+        //标点符号也是字符
+        console.log(str.lastIndexOf('说'));     //从后往前找，找到离查找起始位置最近的一个字符
+
+
+        //查找字符串位置及次数
+        var str = 'abcoefoxyozzopp';
+        var index = str.indexOf('o');
+        var num = 0;
+        while (index !== -1) {
+            console.log(index);                 //第一次查找完先输出，再修改元素参数
+            num++;
+            index = str.indexOf('o',index + 1);
+        }
+        console.log('o出现的次数是：'+num);
+
+        //查找数组中元素位置及次数
+        var arr = ['red','blue','red','green','red','red'];
+        var index = arr.indexOf('red');
+        var time = 0;
+        while (index !== -1) {
+            console.log(index);
+            time++;
+            index = arr.indexOf('red',index+1);
+        }
+        console.log(time);
+
+        //根据位置返回字符
+        //charAt(index) 根据位置返回字符
+        var str = 'andy';
+        console.log(str.charAt(3));
+        //遍历所有字符
+        for(var i = 0; i < str.length; i++) {
+            console.log(str.charAt(i));
+        }
+
+        //2、str[index] H5 新增的
+        console.log(str[0]);            //a    //ie8+支持，H5
+
+        //3、 charCodeAt(index)   返回相应索引号的字符ASCII值  目的：判断用户按下了哪个键   ps/ASCII码是对应键盘上的按键的
+        console.log(str.charCodeAt(0));     //97
+
+        //判断字符串中出现最多的字符，并统计次数
+        var str = 'abcoefoxyozzopp';
+        var max = 0;
+        var zm = '';
+        // for (var i = 0; i < str.length; i++) {
+        //     var index = str.indexOf(str(i));
+        //     var time = 0;
+        //     while (index != -1) {
+        //         time++;
+        //         index = str.indexOf(str(i),index + 1);
+        //     }
+        //     // time > max ? max == time && zm == str(i) : max;
+        //     if (time >= max) {
+        //         max == time;
+        //         zm == str(i)
+        //     } else {
+        //         max;
+        //     }
+        //     return max , zm;
+        // }
+        // console.log(zm);
+        // console.log(max);
+
+
+        //改后
+        var str = 'abcoefoxyozzopp';
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i);      //chars是字符串每个字符
+            if(o[chars]) {
+                o[chars]++;             //遇到过的属性做后缀递增
+            } else {
+                o[chars] = 1;         //没有该属性则新建属性赋值为1
+            }
+        }
+        console.log(o);
+        var max = 0;
+        var ZM = '';
+        for (var k in o) {
+            if (o[k] > max) {            //k得到属性名
+                max = o[k];
+                ZM = k;
+            }
+        }
+        console.log(max);
+        console.log(ZM);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

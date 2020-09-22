@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0 0;
+            padding: 0 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-image: url(../../杂图/sp365/6678.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+        }
+        .img1 {
+            position: relative;
+            width: 200px;
+            height: 160px;
+            align-items: center;
+        }
+        img {
+            position: absolute;
+            width: 200px;
+            height: 160px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+            <!-- 可以用ul+li去做 -->
+    <div class="container">          
+        <div class="img1" ><img src="../../杂图/sp365/6678.jpg" alt=""></div>
+        <div class="img1" ><img src="../../杂图/sp365/6671.jpg" alt=""></div>
+        <div class="img1" ><img src="../../杂图/sp365/5278.jpg" alt=""></div>
+        <div class="img1" ><img src="../../杂图/sp365/4457.jpg" alt=""></div>
+    </div>
+    <script>
+        var imgs = document.querySelector('.container').querySelectorAll('img');
+        console.log(imgs);
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onmouseover = function () {
+                document.body.style.backgroundImage = 'url('+ this.src + ')';
+                // 相同方法下图片url被添加进background不能正常运行，而backgroundImage却可以
+            } 
+        }
+        // var img1 = document.querySelectorAll('.img1');
+        // var img = document.querySelectorAll('img');
+        // var body = document.querySelector('body');
+        // console.log(img1);
+        // for (var i = 0; i < img1.length; i++) {
+        //     img1[i].onclick = function () {
+        //         body.style.background = img1[i].img.sr;
+        //     }
+        // }
+    </script>
+    <script>
+
+    </script>
+</body>
+</html>

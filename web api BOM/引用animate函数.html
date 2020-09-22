@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            font: 900 56px/64px 'PingFang SC';
+        }
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .sliderBar {
+            position: absolute;
+            right: 0;
+            display: flex;
+        }
+        span {
+            position: absolute;
+            right: 0;
+            display: inline-block;
+            text-align: center;
+            line-height: 90px;
+            width: 100px;
+            height: 100px;
+            background-color: khaki;
+            color: #ffffff;
+            z-index: 2;
+        }
+        .con {
+            position: absolute;
+            padding-left: 24px;
+            right: -500;
+            text-align: left;
+            line-height: 90px;
+            width: 500px;
+            height: 100px;
+            background-color: khaki;
+            color: #ffffff;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+<body>
+    <div class="sliderBar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+    <script>
+        //1.获取元素
+        var sliderBar = document.querySelector('.sliderBar');
+        var span = sliderBar.querySelector('span');
+        var con = document.querySelector('.con');
+        //当鼠标经过 sliderBar 就会让 con进行滑动动画
+        sliderBar.addEventListener('mouseenter',function() {
+            animate(con,-400,function() {
+                change_arrow();
+            });
+        })
+        sliderBar.addEventListener('mouseleave',function() {
+            animate(con,400,function() {
+                change_arrow();
+            });
+        })
+        function change_arrow() {
+            if(span.innerHTML == '←') {
+                span.innerHTML = '→';
+            } else if(span.innerHTML == '→') {
+                span.innerHTML = '←';
+            }
+        }
+    </script>
+</body>
+</html>

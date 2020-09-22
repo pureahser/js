@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //字符串操作方法
+        // 1.concat('字符串1','字符串2'....)
+        var str = 'andy';
+        console.log(str.concat('red'));
+        // str1 + str2 同样可以拼接字符串
+
+        // 2.substr('截取的起始位置','截取几个字符');
+        var str1 = 'javascript 天下第一！'      //空格也算字符
+        console.log(str1.substr(11,5));        //11是索引号，5是取几个字符
+
+        //3.替换字符 replace('被替换的字符'，'替换为的字符')  只会替换第一个
+        var str = 'HALLO WORLD';
+        console.log(str.replace('HALLO','BYE'));
+
+        //把里面所有HALLO 替换为BYE
+        var str1 = 'HALLO WORLD HALLO WORLD';
+        while (str1.indexOf('HALLO') != -1) {           //只要检索出还有该字符就继续替换
+            str1 = str1.replace('HALLO','BYE');
+        }
+        console.log(str1);
+
+        //4.字符转换为数组 split('分隔符')    join是将数组添加分隔符转换为字符串
+        var str2 = 'X,Y,Z';
+        console.log(str2.split(','));
+
+        //5.字符大小写转换
+        var str3 = 'x,y,z';
+        console.log(str3.toUpperCase());
+        var str4 = 'X,Y,Z';
+        console.log(str4.toLowerCase());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

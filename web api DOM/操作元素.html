@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>显示系统年月</button>
+    <div>某个年月   </div>
+    <p></p>
+    <div class="strong1"></div>
+    <div class="strong2"></div>
+    <p class="wr">
+        读取我
+        <span>123</span>
+    </p>
+    <script>
+        // 点击按钮后   div里面的文字发生变化
+        //1、获取元素
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        //2、注册事件
+        btn.onclick = function () {
+            div.innerText = getDate();
+        }
+        function getDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var day = date.getDay();
+            return '今天是：' + year + '年' + month + '月' + dates + '日' + arr[day];
+        }
+
+        //元素可以不添加事件 直接修改标签内容
+        var p = document.querySelector('p');
+        p.innerText = getDate();
+
+        //innerText 和 innerHTML的区别
+        //1. innerText      不识别html标签 非标准
+        var strong1 = document.querySelector('.strong1');
+        strong1.innerText = '<strong>这里要变粗</strong> 这里不变粗';
+        console.log(strong1.innerText);
+        //2. innerHTML      识别html标签 W3C标准     识别html标签    W3C标准
+        var strong2 = document.querySelector('.strong2');
+        strong2.innerHTML = '<strong>这里要变粗</strong> 这里不变粗';
+        console.log(strong2.innerHTML);
+        // 这两属性可读写，能获取元素内容
+        var wr =document.querySelector('.wr');
+        console.log(wr.innerText);              //去除html标签，同时空格和换行也会去掉
+        console.log(wr.innerHTML);              //包括html标签，同时保留空格和换行
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal {
+            z-index: 1;
+            position: absolute;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 576px;
+            height: 270px;
+            background-color: #fff;
+            /* outline: 1px solid red; */
+        }
+
+        .close {
+            position: absolute;
+            right: -8px;
+            top: -8px;
+        }
+
+        h1 {
+            margin-top: 16px;
+            margin-bottom: 16px;
+            font: 400 36px/48px 'PingFang SC';
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .user {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+
+        .login {
+            width: 120px;
+            height: 36px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="modalOp">点击弹出登录框</button>
+    <div class="modal">
+        <h1>登录会员</h1>
+        <div class="container">
+            <div class="user">
+                <span>用户名：</span>
+                <input type="text" value="请输入用户名">
+            </div>
+            <div class="key">
+                <span>登录密码：</span>
+                <input type="text" value="请输入登录密码">
+            </div>
+        </div>
+        <button class="login">登录</button>
+        <button class="close">X</button>
+    </div>
+    <script>
+        var body = document.querySelector('body');
+        var modal = document.querySelector('.modal');
+        var close = document.querySelector('.close');
+        var modalOp = document.querySelector('.modalOp');
+        modalOp.addEventListener('click', function () {
+            modal.style.display = 'flex';
+            body.style.backgroundColor = '#999';
+            modalOp.style.display = 'none';
+        })
+        close.addEventListener('click', function () {
+            modal.style.display = 'none';
+            body.style.backgroundColor = '#fff';
+            modalOp.style.display = 'block';
+        })
+        var ml = modal.offsetLeft;
+        var mt = modal.offsetTop;
+        modal.addEventListener('mousedown', function (e) {
+            var xd = e.pageX - modal.offsetLeft;
+            var yd = e.pageY - modal.offsetTop;
+            modal.addEventListener('mousemove', fn);
+            function fn(e) {
+                modal.style.left = e.pageX - xd + 'px';
+                modal.style.top = e.pageY - yd + 'px';
+            }
+            modal.addEventListener('mouseup', function () {
+                modal.removeEventListener('mousemove', fn);
+            })
+        })
+    </script>
+</body>
+
+</html>

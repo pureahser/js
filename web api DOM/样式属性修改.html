@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #000;
+        }
+        .close-btn {
+            position: absolute;
+            border: 1px solid blue;
+            color: blue;
+            cursor: pointer;
+            right: 8px;
+            top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <i class="close-btn">X</i>
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        var close_btn = document.querySelector('.close-btn')
+        var flag = 0;
+        div.onclick = function () {
+            if (flag == 0) {
+                this.style.background = 'grey';
+                this.style.width = '100px';
+                flag = 1;
+            } else {
+                this.style.background = 'purple';
+                flag = 0;
+            }
+        }
+        close_btn.onclick = function () {
+            div.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

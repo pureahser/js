@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>ie9-</button>
+    <script>
+        //传统注册方式
+        var btns = document.querySelectorAll('button');
+        btns[0].onclick = function () {
+            alert('Hello World');
+        }
+        btns[0].onclick = function () {
+            alert('Bye World');
+        }
+        //传统注册事件是唯一性的，同一元素后面的事件会覆盖前面的
+
+        //方法监听注册方式  IE9+
+        //1.里面事件类型是字符串 必定加引号 而且不带on
+        //2.同一元素 同一事件可以添加多个监听处理程序
+        btns[1].addEventListener('click',function(){
+            alert('22');
+        })
+        btns[1].addEventListener('click',function(){
+            alert('33');
+        })
+        //该方法接收三个参数
+        //type:事件类型字符串，如click，这里不带on
+        //listener:事件处理函数，事件发生时，会调用该监听函数
+        //useCapture:可选参数，是一个布尔值，默认是false
+       
+        //IE9之前可用  attachEvent()代替
+        btns[2].attachEvent('onclick',function() {
+            alert(11);
+        })
+    </script>
+</body>
+</html>

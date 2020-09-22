@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tab_list {
+            display: flex;
+            border: 1px solid red;
+        }
+        .current {
+            color: red;
+        }
+        .top {
+            padding: 24px;
+        }
+        .tab_con {
+            margin-top: 32px;
+        }
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab_list">
+                <div class="top current">商品介绍</div>
+                <div class="top">规格与包装</div>
+                <div class="top">售后保障</div>
+                <div class="top">商品评价 (50000)</div>
+                <div class="top">手机社区</div>
+        </div>
+        <div class="tab_con">
+            <div class="item">
+                商品介绍模块
+            </div>
+            <div class="item">
+                规格介绍模块
+            </div>
+            <div class="item">
+                售后保障模块
+            </div>
+            <div class="item">
+                商品评价(50000)模块
+            </div>
+            <div class="item">
+                手机社区模块
+            </div>
+        </div>
+    </div>
+    <script>
+        var tops = document.querySelectorAll('.top');
+        var items = document.querySelectorAll('.item');
+        for ( var i = 0; i < tops.length; i++) {
+            tops[i].setAttribute('index',i);            //此处给当前选中的按钮添加自定义属性
+            tops[i].onclick = function() {
+              for(var i = 0; i < tops.length; i++) {
+                  tops[i].className = 'top';
+                  items[i].style.display = 'none';
+              }
+              this.className = 'top current';
+              var index = this.getAttribute('index');   //此处提取之前给当前按钮赋值的自定义属性
+              items[index].style.display = 'block';     //用自定义属性是值来做模块伪数组的元素选择
+            }
+        }
+        //自定义属性是为了在页面上保存并使用数据，而不用在库中
+    </script>
+</body>
+</html>

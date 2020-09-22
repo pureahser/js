@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log(1+1); //2
+        console.log(1-1); //0
+        console.log(1*1); //1
+        console.log(1/1); //1
+        // 1. %取余 进行整除后的余数 ,  主要运用于判断数据能否整除
+        console.log(3%5); //3
+        console.log(5%3); //2
+        console.log(2%4); //2
+        console.log(4%2); //0
+        // 使用浮点进行运算最高精度17位，远不如整数计算会有误差
+        console.log(0.07*100); //7.000000000000001
+        // 浮点数不能直接拿来比较是否相等
+        var num=(0.1+0.2);
+        console.log(num == 0.3); //false
+        
+        // 程序中  返回值在左，表达式在右
+        var num1=1+1;
+        console.log(num1);
+        
+        // 前置递增运算符, ++写在变量的前面
+        var age= 11;
+        ++age;   //类似于 age = age + 1
+        console.log(age);
+        // 先加1 后返回值
+        var p =10;
+        console.log(++p + 10);
+        // 后置递增运算符， ++写在变量后面
+        var age1=30;
+        // 先返回原值，后自加1
+        // console.log(age1++ + 10);
+        var age2 = age1++ + ++age1;   //从左往右运算age1++=30 , ++age1=32, 和为62
+        console.log(age2);
+        
+        
+
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

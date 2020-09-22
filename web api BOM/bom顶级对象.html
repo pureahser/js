@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //window.document.querySelector()
+        var num = 10;
+        console.log(num);
+        console.log(window.num);    //全局变量就是window的属性
+        function fn() {
+            console.log(11);
+        }
+        window.fn();    //函数其实是window的方法
+        // alert(11);
+        // window.alert(11);
+        console.dir(window);
+
+        // window下的特殊属性name
+        // 故而不要将变量命名为name
+    </script>
+</body>
+</html>

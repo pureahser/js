@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            height: 1200px;
+        }
+
+        /* 不能在body上设置屏幕宽高，要再新建一层元素专门控制屏幕宽高 */
+        .focus {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        ul {
+            position: absolute;
+            margin-left: -100%;
+        }
+
+        .container {
+            display: flex;
+            left: 0;
+        }
+
+        img {
+            width: 100vw;
+        }
+
+        ol {
+            position: absolute;
+            display: flex;
+            right: 9vw;
+            top: 10.5rem;
+        }
+
+        ol li {
+            width: 1.2vw;
+            height: 1vh;
+            margin: 0 1vw;
+            background-color: #fff;
+            border-radius: 1px;
+            z-index: 2;
+        }
+
+        .current {
+            width: 5vw;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100%;
+            background-color: cadetblue;
+        }
+
+        .goBack {
+            display: none;
+            position: fixed;
+            top: 30vh;
+            right: 5vw;
+        }
+
+        p {
+            color: cornsilk;
+            font: 900 2rem/9rem 'PingFang SC';
+        }
+    </style>
+    <!-- <script src="animate.js"></script> -->
+</head>
+
+<body>
+    <div class="focus">
+        <ul>
+            <div class="container">
+                <!-- <li><img src="sliderImg/index_develop_bg3.jpg" alt=""></li> -->
+                <li><img src="sliderImg/index_develop_bg1.jpg" alt=""></li>
+                <li><img src="sliderImg/index_develop_bg2.jpg" alt=""></li>
+                <li><img src="sliderImg/index_develop_bg3.jpg" alt=""></li>
+                <!-- <li><img src="sliderImg/index_develop_bg1.jpg" alt=""></li> -->
+            </div>
+        </ul>
+        <ol></ol>
+    </div>
+    <div class="main">
+        <div class="goBack">
+            <P>GO BACK</P>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var body = document.querySelector('body');
+            var focus = document.querySelector('.focus');
+            var container = document.querySelector('.container');
+            var ul = document.querySelector('ul');
+            //动态克隆子元素
+            var liFirst = container.children[0].cloneNode(true);
+            container.appendChild(liFirst);
+            var liEnd = container.children[container.children.length - 2].cloneNode(true);
+            container.insertBefore(liEnd, container.children[0]);
+            var lis = container.querySelectorAll('li');     //此处犯错忘记在获取多个元素时没加ALL
+            var ol = document.querySelector('ol');
+            var currentNum = '';
+            for (var i = 0; i < lis.length - 2; i++) {
+                var li = document.createElement('li');
+                li.setAttribute('liNum', i);
+                ol.appendChild(li);
+                li.addEventListener('touchstart', function () {
+                    for (var i = 0; i < ol.children.length; i++) {
+                        ol.children[i].className = '';
+                    }
+                    this.className = 'current';
+                    var liNum = this.getAttribute('liNum');
+                    currentNum = document.querySelector('.current').getAttribute('liNum');
+                    var j = -liNum * focus.offsetWidth;
+                    ul.style.transition = 'all .5s ease-out';
+                    ul.style.transform = 'translateX(' + j + 'px)';
+                })
+            }
+            ol.children[0].className = 'current';
+            var startX = '';
+            var x = 0;
+            var round = 0;
+            var flag = true;
+            ul.addEventListener('touchstart', function (e) {
+                clearInterval(timeR);
+                moveX = 0;
+                startX = e.targetTouches[0].pageX;
+                x = this.offsetLeft;
+            });
+            ul.addEventListener('touchmove', function (e) {
+                moveX = e.targetTouches[0].pageX - startX;
+                // this.style.left = x + moveX + 'px';
+                e.preventDefault();
+            });
+            ul.addEventListener('touchend', function () {
+                End();
+            });
+            function End(e) {
+                for (var i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                ul.style.transition = 'none';
+                if (moveX <= -50) {
+                    if (round == lis.length - 2) {
+                        round = 0;
+                        var j = -round * focus.offsetWidth;
+                        ul.style.transform = 'translateX(' + j + 'px)';
+                    }
+                    if (currentNum == lis.length - 3) {
+                        currentNum = 0;
+                    }
+                    else {
+                        currentNum++;
+                    }
+                    round++;
+                    var j = -round * focus.offsetWidth;
+                    ul.style.transition = 'all .5s ease-out';
+                    ul.style.transform = 'translateX(' + j + 'px)';
+                    ol.children[currentNum].className = 'current';
+                }
+                else if (moveX >= 50) {
+                    if (round == -1) {
+                        round = lis.length - 3;
+                        var j = -round * focus.offsetWidth;
+                        ul.style.transform = 'translateX(' + j + 'px)';
+                    }
+                    if (currentNum == 0) {
+                        currentNum = lis.length - 3;
+                    }
+                    else {
+                        currentNum--;
+                    }
+                    round--;
+                    var j = -round * focus.offsetWidth;
+                    ul.style.transition = 'all .5s ease-out';
+                    ul.style.transform = 'translateX(' + j + 'px)';
+                    ol.children[currentNum].className = 'current';
+                }
+                else {
+                    var j = -round * focus.offsetWidth;
+                    ul.style.transition = 'all .5s ease-out';
+                    ul.style.transform = 'translateX(' + j + 'px)';
+                    ol.children[currentNum].className = 'current';
+                }
+                // var timeS = setTimeout(function() {
+                //     var moveX = -50;
+                //     var timeR = setInterval(End,4000);
+                //     clearTimeout(timeS);
+                // }, 5000)
+            }
+            var moveX = -50;
+            var timeR = setInterval(End, 4000);
+            //轮播图结束
+            var main = document.querySelector('.main');
+            var goBack = main.querySelector('.goBack');
+            var mainTop = main.offsetTop;
+            document.addEventListener('scroll', function () {
+                console.log(window.pageYOffset);
+                if (window.pageYOffset >= mainTop) {
+                    goBack.style.display = 'block';
+                } else {
+                    goBack.style.display = 'none';
+                }
+            })
+            goBack.addEventListener('click',function () {
+                window.scroll(0,0);
+                window.style.transition = 'all .5s ease-out';
+            })
+        });
+    </script>
+</body>
+
+</html>

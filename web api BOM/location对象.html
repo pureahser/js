@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <div></div>
+    <script>
+        // location对象属性
+        // location.href    获取或设置整个URL   重点
+        // location.host    返回主机(域名)
+        // location.port    返回端口号  如果未写返回 空字符串
+        // location.pathname    返回路径
+        // location.search   返回参数   重点
+        // location.hash    返回片段  #后面内容 常见于链接 锚点
+
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        btn.addEventListener('click',function() {
+            console.log(window.location.href);
+            // location.href = 'http://www.baidu.cn';
+            // location.assign();       //重定向浏览，可记录历史页面
+            // location.replace();      //无痕浏览，不可记录历史页面
+            // location.reload();       //重新加载当前页面 
+                                        //括号内参数为true则是强制刷新(ctrl+f5)
+        })
+        var timer = 5;
+        fn();
+        var change_href = setInterval(fn, 1000);
+        function fn() {
+            if (timer == 0 ) {
+                location.href = 'http://www.baidu.cn';
+            } else {
+                div.innerHTML = '您将在'+ timer +'秒后跳转到首页';
+                timer--;
+            }
+        }
+        //上面是5秒动态写法，下面是静态；动态需要先运行一遍
+        // var change_href = setTimeout(fn , 5000);
+        // function fn() {
+        //     location.href = 'http://www.baidu.com';
+        // }
+    </script>
+</body>
+</html>

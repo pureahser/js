@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>wwwww</h2>
+    <div id="demo"></div>
+    <script>
+        //DOM树
+        // 文档：一个页面就是一个文档，DOM中使用 document 表示
+        // 元素：页面中所有标签都是元素，DOM中使用 element 表示
+        // 节点：网页中的所有内容都是节点（标签、属性、文本、注释等），DOM中使用 node表示
+
+        //更改元素
+        document.getElementById("demo")          .innerHTML = "元素内容"
+                .getElementByTagName(name)       .attribute = "new value"
+                .getElementByClassName(name)     .property  = "new style"
+                                                 .setAttribute(attribute,value);
+
+        // 添加和删除元素
+        document.createElement(element)      //创建
+                .removeChild(element)        //移动
+                .appendChild(element)        //添加
+                .replaceChild(new,old)       //替换
+                .write(text)                 //同样是更改元素内容但是write是重绘了页面
+        
+        //添加事件处理程序
+        document.getElementById("demo").onclick = function() {code}
+        
+        //查找html文件中的元素
+        var myElement = document.getElementById("intro");
+        var myElement = document.getElementsByTagName("p");
+
+        //查找所有id是X的元素，查找所有id是X的<p>元素
+        var x = document.getElementById("X");
+        var y = x.getElementByTagName("p");
+
+        //通过类名查找html元素
+        var x = document.getElementsByClassName("intro")
+
+        //通过css选择器查找html元素(<p>中带class="intro")
+        var x = document.querySelectorAll("p.intro");
+
+    </script>
+</body>
+</html>

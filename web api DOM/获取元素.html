@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time">2020-8-18</div>
+    <ul>
+        <li>HALLO WORLD!1</li>
+        <li>HALLO WORLD!2</li>
+        <li>HALLO WORLD!3</li>
+        <li>HALLO WORLD!4</li>
+        <li>HALLO WORLD!5</li>
+    </ul>
+    <ol>
+        <li>HALLO WORLD!1</li>
+        <li>HALLO WORLD!2</li>
+        <li>HALLO WORLD!3</li>
+        <li>HALLO WORLD!4</li>
+        <li>HALLO WORLD!5</li>
+    </ol>
+    <div class="box">盒子</div>
+    <div class="box">盒子</div>
+    <div class="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+    <script>
+        // getElementById采用驼峰命名法
+        // 参数 id是大小写敏感的字符串
+        // 返回值是个元素对象
+        var time1 = document.getElementById('time');
+        console.log(time1);
+        console.log(typeof time1);
+        //console.dir 打印返回的元素对象 更好查看里面的属性及方法
+        console.dir(time1);
+
+        //根据标签名获取
+        var number1 = document.getElementsByTagName('li');
+        console.log(number1);
+        console.log(number1[0]);        //伪数组
+        //用遍历来依次打印元素对象
+        for(var i = 0; i < number1.length; i++) {
+            console.log(number1[i]);
+        }
+        //页面中就算只有一个li 返回的还是伪数组的形式
+        //如果没有当前元素返回的是个空的伪数组
+        //父元素.getElementsByTagName('标签名');     //父元素必须是指定的单个元素
+        // var ol = document.getElementsByTagName('ol');     //先声明一个父元素
+        // console.log(ol[0].getElementsByTagName('li'));
+        var ol = document.getElementById('ol');
+        console.log(ol.getElementsByTagName('li'));
+
+        //根据类名获取    (H5新增)
+        var box = document.getElementsByClassName('box');
+        console.log(box);
+
+        //根据制定选择器返回第一个元素对象    里面的选择器需要加符号   (H5新增)
+        var firstBox = document.querySelector('.box');   //加.判断为类选择器
+        console.log(firstBox);
+        var nav = document.querySelector('#nav');        //加#自动判断是id选择器
+        console.log(nav);
+        var li = document.querySelector('li');
+        console.log(li);
+
+        var allBox = document.querySelectorAll('.box');  //获得当前标签下的所有元素
+        console.log(allBox);
+
+
+        //获取body元素
+        var bodyEle = document.body;
+        console.log(bodyEle);
+        //获取html元素
+        var htmlEle = document.documentElement;
+        console.log(htmlEle);
+    </script>
+</body>
+</html>

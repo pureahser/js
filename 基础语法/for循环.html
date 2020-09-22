@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1、 for 重复执行代码通常与计数有关
+
+        // for (初始化变量;条件表达式;操作表达式) {
+        //     循环体
+        // }
+
+        // 初始化变量 是var声明的普通变量，通常用于计数
+        //条件表达式  用于决定循环执行的终止条件
+        //操作表达式  就是每次的循环的执行代码，常用于进行递增或递减
+
+        // for (var i = 1 ; i<=100; i++) {
+        //     console.log('循环体');
+        // }
+
+        // 首先执行 计数器变量 var i = 1 在for中只执行1次
+        // i <= 100 来判断是否满足条件，如满足 则执行 循环体 不满足则退出循环
+        // 最后执行 i++ 第一轮结束
+
+        // var num =prompt ('XXX')
+        // for(var i = 1 ; i <= num ; i++) {
+        //     console.log('今年' + i + '岁了');
+        // }
+
+        // for (var i = 1; i <= 100; i++) {
+        //     if (i == 1) {
+        //         console.log('出生1岁了');
+        //     } else if (i == 100) {
+        //         console.log('您100岁了');
+        //     } else {
+        //         console.log('今年你'+ i +'岁了');
+        //     }
+        // }
+
+        //求1~100 之间的整数累加和与平均数
+        // var sum = 0;
+        // var average = 0;
+        // for (var i = 1;i <=100; i++) {
+        //     sum = sum + i;
+        // }
+        // console.log(sum);
+        // average = sum / 100;
+        // console.log(average);
+
+        //偶数和与奇数和
+        // var odd = 0;
+        // var even = 0;
+        // for (var i = 1; i <= 200; i++)  {
+        //     if (i % 2 == 0) {
+        //         even = even + i;
+        //     } else {
+        //         odd=odd + i;
+        //     }
+        // }
+        // console.log('1~'+ i +'之间的偶数和是'+'even');
+        // console.log('1~'+ i +'之间的奇数和是'+'odd');
+        
+        //能被3整除的数字和
+        var sum = 0;
+        for (var num1 = 1; num1 <= 100; num1++) {
+            if (num1 % 3 == 0) {
+                sum= sum + num1;
+            }
+        }
+        console.log(sum);
+        console.log('1~100之间能被3整除的数字是'+sum);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

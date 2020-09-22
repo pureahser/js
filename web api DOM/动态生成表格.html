@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+<script>
+    //先准备以数组形式储存的对象数据
+    var datas = [
+        {
+            name: 'Giao',
+            subject: 'JS',
+            score: 99
+        },
+        {
+            name: 'Hiao',
+            subject: 'JS',
+            score: 78
+        },
+        {
+            name: 'Fiao',
+            subject: 'JS',
+            score: 16
+        },
+        {
+            name: 'Qiao',
+            subject: 'JS',
+            score: 68
+        }
+    ];
+    var tbody = document.querySelector('tbody');
+    for (var i = 0;i < datas.length; i++) {
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr);
+        for (var k in datas[i]) {       //里面for循环管列创建单元格
+        var td = document.createElement('td');
+        td.innerHTML = datas[i][k];
+        tr.appendChild(td);
+        }
+        var td = document.createElement('td');
+        td.innerHTML = '<a href="javascript:;">删除</a>';
+        tr.appendChild(td);
+        var as = document.querySelectorAll('a');
+        as[i].onclick = function() {
+            tbody.removeChild(this.parentNode.parentNode);
+            //此处as的父级仅仅是单元格不是行，要父级的父级才是需要删除的行
+        }
+    }
+</script>
+</html>

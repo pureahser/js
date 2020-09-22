@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 不能在body上设置屏幕宽高，要再新建一层元素专门控制屏幕宽高 */
+        .focus {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        ul {
+            position: absolute;
+        }
+
+        .container {
+            display: flex;
+            left: 0;
+        }
+
+        img {
+            width: 100vw;
+        }
+
+        ol {
+            position: fixed;
+            display: flex;
+            right: 9vw;
+            /* top: 176px; */
+            top: 21vh;
+        }
+
+        ol li {
+            width: 1.2vw;
+            height: 1vh;
+            margin: 0 1vw;
+            background-color: #fff;
+            border-radius: 1px;
+            z-index: 2;
+        }
+
+        .current {
+            width: 5vw;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+
+<body>
+    <div class="focus">
+        <ul>
+            <div class="container">
+                <li><img src="sliderImg/index_develop_bg1.jpg" alt=""></li>
+                <li><img src="sliderImg/index_develop_bg2.jpg" alt=""></li>
+                <li><img src="sliderImg/index_develop_bg3.jpg" alt=""></li>
+            </div>
+        </ul>
+        <ol></ol>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            var body = document.querySelector('body');
+            var focus = document.querySelector('.focus');
+            var container = document.querySelector('.container');
+            var ul = document.querySelector('ul');
+            var lis = container.querySelectorAll('li');     //此处犯错忘记在获取多个元素时加ALL
+            var ol = document.querySelector('ol');
+            var currentNum = '';
+            for (var i = 0; i < lis.length; i++) {
+                var li = document.createElement('li');
+                ol.appendChild(li);
+                li.setAttribute('liNum', i);
+                li.addEventListener('touchstart', function () {
+                    for (var i = 0; i < ol.children.length; i++) {
+                        ol.children[i].className = '';
+                    }
+                    this.className = 'current';
+                    var liNum = this.getAttribute('liNum');
+                    // currentNum = document.querySelector('.current').getAttribute('liNum');
+                    var j = -liNum * focus.offsetWidth;
+                    animate(ul, j);
+                })
+            }
+            ol.children[0].className = 'current';
+            var startX = '';
+            var x = 0;
+            var moveX = '';
+            var round = 0;
+            var flag = true;
+            ul.addEventListener('touchstart', function (e) {
+                startX = e.targetTouches[0].pageX;
+                x = this.offsetLeft;
+            });
+            ul.addEventListener('touchmove', function (e) {
+                moveX = e.targetTouches[0].pageX - startX;
+                this.style.left = x + moveX + 'px';
+                e.preventDefault();
+            });
+            ul.addEventListener('touchend', function () {
+                End();
+            })
+            function End(e) {
+                if (flag) {
+                    flag = false;
+                    for (var i = 0; i < ol.children.length; i++) {
+                        ol.children[i].className = '';
+                    }
+                    if (moveX <= -100) {
+                        if (round == lis.length - 1) {
+                            round = 0;
+                            currentNum = 0;
+                        } else {
+                            round++;
+                            currentNum++;
+                        }
+                        var j = -round * focus.offsetWidth;
+                        animate(ul, j, function () {
+                            flag = true;
+                        });
+                        ol.children[currentNum].className = 'current';
+                    } else if (moveX >= 100) {
+                        if (round == 0) {
+                            round = lis.length - 1;
+                            currentNum = ol.children.length - 1;
+                            //length是从1开始计算的，而数组元素序号是0开始所以-1
+                        } else {
+                            round--;
+                            currentNum--;
+                        }
+                        var j = -round * focus.offsetWidth;
+                        animate(ul, j, function () {
+                            flag = true;
+                        });
+                        ol.children[currentNum].className = 'current';
+                    } else {
+                        var j = -round * focus.offsetWidth;
+                        animate(ul, j, function () {
+                            flag = true;
+                        });
+                        ol.children[currentNum].className = 'current';
+                    }
+                    console.log(currentNum);
+                }
+            }
+            var moveX = -100;
+            var timeR = setInterval(End , 5000);
+            ul.addEventListener('touchstart',function() {
+                moveX = 0;
+                clearInterval(timeR);
+                //此处要清除方法就得用调用时赋给它的值
+            })
+        })
+    </script>
+</body>
+
+</html>

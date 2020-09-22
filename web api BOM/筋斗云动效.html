@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .cloud {
+            position: absolute;
+            left: 0;
+            width: 128px;
+            height: 54px;
+            background: url(../../杂图/1/10255133_150520583563_2.jpg) no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        ul {
+            position: absolute;
+            margin: 16px 0;
+            z-index: 2;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        li {
+            list-style: none;
+            padding: 0 32px;
+            /* 此处用margin将导致图片定位其left有误差 */
+            color: black;
+        }
+
+        a {
+            color: unset;
+        }
+
+        .current {
+            color: yellowgreen;
+        }
+    </style>
+    <script src="animate.js"></script>
+</head>
+
+<body>
+    <span class="cloud"></span>
+    <ul>
+        <div class="container">
+            <li class="current"><a href="#">首页新闻</a></li>
+            <li><a href="#">师资力量</a></li>
+            <li><a href="#">活动策划</a></li>
+            <li><a href="#">企业文化</a></li>
+            <li><a href="#">招聘信息</a></li>
+            <li><a href="#">公司简介</a></li>
+        </div>
+    </ul>
+    <script>
+        window.addEventListener('load', function () {
+            var cloud = document.querySelector('.cloud');
+            var current = document.querySelector('.current');
+            var lis = document.querySelectorAll('li');
+            // cloud.style.width = lis[0].offsetWidth;
+            // cloud.style.height = lis[0].offsetHeight;
+            var leftOr = 0;
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].addEventListener('mouseenter', function () {
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].className = '';
+                    }
+                    this.className = 'current';
+                    animate(cloud, this.offsetLeft);
+                    this.addEventListener('mouseleave', function () {
+                        animate(cloud, leftOr);
+                        for (var i = 0; i < lis.length; i++) {
+                            if (lis[i].offsetLeft == leftOr) {
+                                lis[i].className = 'current';       //在遍历的时候，要先出现一次遍历当前对象，再这个对象下面的层级才能用this
+                                console.log('true');
+                            } else {
+                                lis[i].className = '';
+                                console.log('false');
+                            }
+                        }
+                    })
+                    this.addEventListener('click', function() {
+                        leftOr = this.offsetLeft;
+                    })
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

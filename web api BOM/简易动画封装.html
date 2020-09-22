@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <button>点击开始</button>
+    <div></div>
+    <script>
+            //简单动画封装  obj目标对象 target目标位置
+            //给不同的元素指定了不同的与元素匹配的定时器
+            function animate(obj, target) {
+                //开始前先将定时器清除，可保证反复点击反复调用的bug
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function() {
+                    if (obj.offsetLeft >= target - 5) {
+                        clearInterval(obj.timer);
+                    }
+                    obj.style.left = obj.offsetLeft + 5 +'px';
+                },30);
+            }
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                var div = document.querySelector('div');
+                animate(div,500);
+            })
+    </script>
+</body>
+</html>

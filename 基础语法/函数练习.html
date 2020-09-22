@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //输入任意两个数字的任意运算，之后弹出结果
+        // var X = prompt ("请输入数字1");
+        // var Y = prompt ("请输入数字2");
+        // var Z = prompt ("做什么运算");
+        // function getResult(X,Y,Z) {
+        //     switch (Z) {
+        //         case '+' :
+        //         var result = parseInt(X)+parseInt(Y);
+        //         break;
+        //         case '-' :
+        //         result = parseInt(X)-parseInt(Y);
+        //         break;
+        //         case 'x' :
+        //         result = parseInt(X)*parseInt(Y);
+        //         break;
+        //         case '/' :
+        //         result = parseInt(X)/parseInt(Y);
+        //     }
+        //     return result;
+        // }
+        // var fin = getResult(X,Y,Z);
+        // alert('结果是'+fin);
+
+        //输入一个数判断是否为素数，并弹出返回值
+        // var X = prompt ("请输入数字");
+        // var result = '';
+        // function getResult(X) {
+        //     for (var i = 2; i <= 9; i++) {
+        //         if(X%i != 0) {
+        //             result = "是" ;
+        //         }else {
+        //             result = "不是" ;
+        //         }
+        //         return result;
+        //     }
+        // }
+        // var zs = getResult(X);                  //函数需要调用
+        // alert('结果'+ result +'素数' );
+
+        //求任意个数的最大值
+        // function getResult(){
+        //     var result = arguments[0];
+        //     for (var i = 1; i < arguments.length; i++) {
+        //         if (arguments[i] > result) {
+        //             result = arguments[i];
+        //         }
+        //     }
+        //     return result;
+        // }
+        // var max = getResult(1,2,3,4);     //这里的数据是伪数组
+        // alert('最大值是'+max);
+
+        // 翻转数组 (不排序)                //问题此处使用arguments为什么不能应用于传递数组
+        // function reverse(arr) {
+        //     var newArr = [];
+        //     for ( var i = arr.length - 1; i >= 0; i--) {
+        //         newArr [newArr.length] = arr[i];
+        //     }
+        //     return newArr;
+        // }
+        // var flip = reverse([5,1,3,2,4]);
+        // console.log(flip);
+        
+        //封装冒泡排序
+        // function sort(arr) {
+        //     var newArr = [];
+        //     for ( var i = 0; i < arr.length-1; i++) {
+        //         for ( var j = 0; j < arr.length - i -1; j++) {
+        //             if (arr[j] > arr[j+1]) {
+        //                 var temp =  arr[j+1];             //冒泡排序切记要用个空变量来完成数据的三角置换
+        //                 arr[j+1] = arr[j];
+        //                 arr[j] = temp;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // var arr1 = sort([5,2,3,4,7,9,6]);
+        // console.log(arr1);
+
+        //判断闰年（能被4整除，不能被100或400整除）
+        // var year = prompt ('请输入年份');
+        // function judge(year) {
+        //     if (year%4 == 0 && year%100 != 0 || year%400 != 0) {
+        //         alert('这年是闰年。');
+        //     } else {
+        //         alert('这年不是闰年');
+        //     }
+        // }
+        // var result = judge(year);
+
+        function fn1() {
+            console.log(11);
+            fn2();                //此处每当调用fn1时都会调用fn2
+        }
+        fn1();
+
+        function fn2() {
+            console.log(22);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

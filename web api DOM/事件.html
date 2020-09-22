@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn_click">点击事件</button>
+    <div>123</div>
+    <div class="father">
+        <div class="son">son盒子</div>
+    </div>
+    <script>
+         //点击按钮，弹出对话框
+         //1、事件是有三部分组成 事件源  事件类型  事件处理程序
+         //(1) 事件源 事件被触发的对象  谁  按钮
+         var btn_click = document.getElementById('btn_click');
+         //(2) 事件类型  如何触发 什么事件 鼠标点击(onclick)等
+         //(3) 事件处理程序  通过函数赋值方式完成 
+         btn_click.onclick = function () {
+             alert('点击成功');
+         }
+
+         //执行事件步骤
+         //获取事件源
+         var div = document.querySelector('div');
+         //注册事件(绑定事件)
+         //div.onclick
+         //添加事件处理程序(采取函数赋值形式)
+         div.onclick = function() {
+             console.log('我被选中了');
+         }
+
+         //JS代码中只能执行捕获或者冒泡其中一个阶段
+         //onclick和attachEvent只能得到冒泡阶段
+         //addEventListener(type,listener[,useCapture])第三个参数如果是true，表示事件捕获阶段调用事件处理程序，如果是false(不写默认就是false),表示事件在冒泡阶段用事件处理程序。
+         //捕获阶段 如果addEventListener 第三个参数是true，则处于捕获阶段
+         //document > html > body > father >son
+         var son = document.querySelector('.son');
+         son.addEventListener ('click',function() {
+             alert('son');
+         },true);
+         var father = document.querySelector('.father');
+         father.addEventListener ('click',function() {
+             alert('father');
+         },true);           //同为捕获阶段下同一方法先执行离document近的标签
+
+         //冒泡阶段 如果addEventListener 第三个阶段是false或者省略，则处于冒泡阶段
+         //son > father > body > html > document
+         var son = document.querySelector('.son');
+         son.addEventListener ('click',function() {
+             alert('son');
+         },false);
+         var father = document.querySelector('.father');
+         father.addEventListener ('click',function() {
+             alert('father');
+         },false);           //同为冒泡阶段下同一方法先执行离document远的标签
+
+    </script>
+</body>
+</html>

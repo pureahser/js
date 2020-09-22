@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(window.devicePixelRatio);
+        // 以下三情况触发load事件
+        // a标签的超链接
+        // F5或者刷新按钮
+        // 前进后退按钮
+        window.addEventListener('load',function() {
+            alert(11);
+        })
+        //由于火狐浏览器有个往返缓存保存页面数据、dom和js和状态，整个页面都存在内存里
+        //pageshow会在load事件触发后触发
+        //pageshow 的 persisted可以判断页面是否来自缓存
+        //pageshow相较load可以避免火狐这样的无论页面是否缓存下来都将触发pageshow事件，注意这个事件给window添加
+    </script>
+    <a href="http://www.baidu.cn">百度</a>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var num = Math.floor(Math.random() * (10-1+1)) +1
+        // console.log(num);
+        // var newNum = prompt('请输入数字');
+        // while (num != newNum) {
+        //     if (num < newNum) {
+        //         newNum = prompt('猜大了重猜');
+        //     } else if (num > newNum) {
+        //         newNum = prompt('猜小了，重猜');
+        //     } 
+        // }
+        // alert('猜中了');
+
+        //猜min-max之间的数字，总共(max-min)/5次机会
+        function getRandom(max,min) {
+            return Math.floor(Math.random() * (max - min +1)) + min;
+        }
+        var num = getRandom(1,50);
+        var time = (50- 1)/5;
+        var newNum = prompt('请输入数字');
+        for (var i = 0; i < time; i++) {
+            if (num < newNum) {
+                newNum = prompt('猜大了重猜');
+            } else if (num > newNum) {
+                newNum = prompt('猜小了，重猜');
+            } else if (num = newNum) {
+                i = time;                           //为了正确后打断暂时想到让循环次数大的不合理
+                alert('猜对了');
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

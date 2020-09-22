@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .first {
+            background: #000;
+            color: blue;
+            font-size: 32px;
+        }
+        .change {
+            background: purple;
+            color: #fff;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="first">文本</div>
+    <script>
+        //1. 使用 element.style 获得修改元素的样式   样式少的时候适用
+        var test = document.querySelector('div');
+        test.onclick = function() {
+            this.style.background = 'purple';
+            this.style.color = '#fff';
+            this.style.fontSize = '25px';
+        } 
+        // 2. 通过写第二种样式 ，整个替换之前样式的方式
+        var test = document.querySelector('div');
+        test.onclick = function() {
+
+            this.className = 'change';          //以覆盖的方式修改当前元素类名
+        }
+        // 3. 保留原先类名 再增加新类名
+        this.className = 'first change';
+    </script
+    </script>
+</body>
+</html>

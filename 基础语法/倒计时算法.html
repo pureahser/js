@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //输入的时间减去现在的时间就是剩余时间   （时分秒直接相减是会产生负数的）
+        //时间戳转换公式：
+        // d = parseInt(总秒数/ 60/60 /24);    //计算天数
+        // h = parseInt(总秒数/ 60/60 %24);    //计算小时
+        // m = parseInt(总秒数/ 60% 60);       //计算分钟
+        // s = parseInt(总秒数%60);            //计算当前秒数
+        function countDown(time) {
+            var nowTime = +new Date();      //返回当前时间总毫秒数      隐式转换
+            var inputTime = +new Date(time);         //返回用户输入时间总毫秒数
+            var cTime = (inputTime-nowTime) / 1000;    //除1k之后将毫秒转换为秒
+            var d = parseInt(cTime/ 60/60/24);
+            d = d < 10 ? '0'+d : d;
+            var h = parseInt(cTime/ 60/60%24);
+            h = h < 10 ? '0'+h : h;
+            var m = parseInt(cTime/ 60% 60);
+            m = m < 10 ? '0'+m : m;
+            var s = parseInt(cTime% 60);
+            s = s < 10 ? '0'+s : s;
+            return '还剩'+d+'天'+h+'小时'+m+'分钟'+s+'秒';
+        }
+        // time=prompt('请输入时间');
+        console.log(countDown('2020-8-15 11:11:11'));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
