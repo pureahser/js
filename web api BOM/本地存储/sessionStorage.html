@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button class="set">储存数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">清空所有数据</button>
+    <script>
+        //对话存储生命周期为关闭浏览器窗口(刷新不删)
+        //在同一页面下数据可共享
+        //一键值对的形式存储并使用
+
+        //本地存储生命周期为永久(存在浏览器内)
+        //可以多页面多窗口共享（同一浏览器）
+        //同样键值对
+        var ipt =document.querySelector('input');
+        var set = document.querySelector('.set');
+        //存储
+        set.addEventListener('click',function() {
+            var val = ipt.value;
+            //只要页面不关闭，表单内的值都一直存在
+            sessionStorage.setItem('uname',val);
+            localStorage.setItem('uname',val);
+        })
+        //获取
+        var get = document.querySelector('.get');
+        get.addEventListener('click',function() {
+            sessionStorage.getItem('uname');
+            localStorage.setItem('uname');
+        })
+        //删除
+        var remove = document.querySelector('.remove');
+        remove.addEventListener('click',function() {
+            sessionStorage.removeItem('uname');
+            localStorage.removeItem('uname');
+        })
+        //清除页面所有数据
+        var del = document.querySelector('.del');
+        del.addEventListener('click',function() {
+            sessionStorage.clear();     //慎用
+            localStorage.clear();
+        })
+    </script>
+</body>
+</html>
