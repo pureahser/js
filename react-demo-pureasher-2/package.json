@@ -3,6 +3,9 @@
   "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts":{
+    "pure":"npm -v"
+  },
   "dependencies": {
     "react": "^16.13.1"
   },
