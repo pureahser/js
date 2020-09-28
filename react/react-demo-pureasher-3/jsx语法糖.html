@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>语法糖</title>
+    <!-- 插入react和react dom -->
+    <!-- 在线拉 -->
+    <!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 在线不能拉时 本地拉 -->
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        //声明渲染标签
+        var hello = React.createElement(
+            'h1', {
+            className: 'red',
+            name: 'jack'
+        }, "Hello World");
+        //渲染标签插入dom中的位置
+        ReactDOM.render(hello, document.querySelector('#app'));
+    </script>
+
+    <script type="text/babel">      //用babel方式1解析js
+        ReactDOM.render(
+            <h1 className="red" name="jack">Hello,World</h1>
+            , document.querySelector('#app'));
+    </script>
+
+    <script type="text/babel">      //用babel方式2解析js
+    var name = 'jack';
+    var ele = <h1 className="red" name="jack">Hello World,{name}</h1>;
+        ReactDOM.render(
+            ele
+            , document.querySelector('#app'));
+    </script>
+</body>
+
+</html>

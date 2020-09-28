@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+    //函数组件
+        // function Hello(props) {
+        //     return <div>
+        //         <h1>Hello,{props.name}</h1>
+        //         <p>年龄：{props.age}</p>
+        //         <p>擅长：js</p>
+        //     </div>
+        // }
+        class HelloJack extends React.Component{
+            render() {
+                return <div>
+                    <h1>Hello,{this.props.name}</h1>
+                    <p>年龄：{this.props.age}</p>
+                    <p>擅长: js</p>
+                </div>
+            }
+        }
+        ReactDOM.render(
+            <HelloJack name="jack" age="18"/>
+            , document.querySelector('#app'));
+    </script>
+</body>
+
+</html>
