@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>click</button>
+    <script>
+        var that;               //全局变量
+        class Star {
+            constructor(age, handsome) {
+                that = this;    //将this赋值给that
+                this.age = age;
+                this.handsome = handsome;
+                this.btn = document.querySelector('button');
+                this.btn.onclick = this.sing;       //此处this指向btn（方法调用者）
+            }
+            sing() {
+                console.log(that.age + that.handsome);
+            }
+        }
+        var zgr = new Star(18, 99);
+    </script>
+</body>
+
+</html>

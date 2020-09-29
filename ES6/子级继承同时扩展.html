@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Father {
+            constructor(x,y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x +this.y);
+            }
+        }
+        //子级继承父级加法的同时 扩展自己的减法
+        class Son extends Father {
+            constructor(x,y) {
+                super(x,y);         //此处调用父级的构造函数要优先于自己的构造函数
+                this.x = x;
+                this.y = y;
+            }
+            subtract() {
+                console.log(this.x - this.y);
+            }
+         }
+         var son = new Son(5,3);
+         son.subtract();
+         son.sum();
+    </script>
+</body>
+</html>

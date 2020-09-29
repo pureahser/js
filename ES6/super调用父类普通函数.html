@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // super 关键字调用父类普通函数
+        class Father {
+            say() {
+                return '我是父级';
+            }
+        }
+        class Son extends Father {
+            say() {
+                // console.log('我是子级');
+                console.log(super.say() + '的子集');        //super 调用父级的属性
+            }
+        }
+        var son = new Son();
+        son.say();          //就近原则，子级本身没有再往父级寻找
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+        nav {
+            position: relative;
+        }
+        #tab {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        ul,
+        li {
+            list-style: none;
+        }
+        li {
+            border-right: 1px solid yellowgreen;
+        }
+        ul {
+            display: flex;
+            height: 50px;
+            width: 40vw;
+            border-top: 1px solid #999999;
+            border-right: 1px solid #999999;
+            border-left: 1px solid #999999;
+        }
+        li {
+            position: relative;
+            width: 100px;
+            height: 100%;
+        }
+        .tabscon {
+            height: 40vh;
+            width: 40vw;
+            border: 1px solid #999999;
+        }
+        #add,
+        #dele {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabsbox" id="tab">
+        <!-- tab 标签 -->
+        <nav>
+            <ul>
+                <li>
+                    <button id="dele">X</button>
+                </li>
+                <li>
+                    <button id="dele">X</button>
+                </li>
+                <li>
+                    <button id="dele">X</button>
+                </li>
+            </ul>
+            <button id="add">+</button>
+        </nav>
+
+        <!-- tab 内容 -->
+        <div class="tabscon">
+            <section class="conative"></section>
+            <section></section>
+            <section></section>
+        </div>
+    </div>
+</body>
+</html>
