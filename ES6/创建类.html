@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建一个 人物类
+        class Person {
+            constructor(uname,age) {            //此处形参uname实参刘德华
+                this.uname = uname;         //此处this对应的是每个新创建的对象
+                this.age = age;
+            }
+            sing(song) {
+                console.log(this.uname + '唱' + song);
+            }
+        }
+
+        //利用类创建对象 new
+        var ldh = new Person('刘德华');
+        var zxy = new Person('张学友',18);
+        console.log(ldh.uname);
+        console.log(zxy);
+        //(1)   类里面所有函数不需要写function
+        //(2)   多个方法之间不需要添加逗号分割
+        ldh.sing('冰雨');
+    </script>
+</body>
+</html>
