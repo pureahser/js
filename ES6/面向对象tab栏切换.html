@@ -8,11 +8,13 @@
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        body {
+        .container {
             width: 100vw;
             height: 100vh;
         }
+
         nav {
             position: relative;
         }
@@ -22,6 +24,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        .tt {
+            width: 50px;
         }
         ul,
         li {
@@ -49,7 +54,7 @@
             border: 1px solid #999999;
         }
         #add,
-        #dele {
+        .dele {
             position: absolute;
             right: 8px;
             top: 8px;
@@ -57,32 +62,63 @@
             height: 16px;
             background-color: #fff;
         }
+        .liActive {
+            background-color: tomato;
+        }
+        .tabscon {
+            position: relative;
+        }
+        section {
+            position: absolute;
+            display: none;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+        .conative{
+            display: block;
+            background-color: tomato;
+        }
     </style>
 </head>
 <body>
-    <div class="tabsbox" id="tab">
-        <!-- tab 标签 -->
-        <nav>
-            <ul>
-                <li>
-                    <button id="dele">X</button>
-                </li>
-                <li>
-                    <button id="dele">X</button>
-                </li>
-                <li>
-                    <button id="dele">X</button>
-                </li>
-            </ul>
-            <button id="add">+</button>
-        </nav>
-
-        <!-- tab 内容 -->
-        <div class="tabscon">
-            <section class="conative"></section>
-            <section></section>
-            <section></section>
+    <div class="try">1</div>
+    <div class="conta   iner">
+        <div class="tabsbox" id="tab">
+            <!-- tab 标签 -->
+            <nav>
+                <ul>
+                    <li class="liActive">
+                        <span>第一页</span>
+                        <button class="dele">X</button>
+                    </li>
+                    <li>
+                        <span>第二页</span>
+                        <button class="dele">X</button>
+                    </li>
+                    <li>
+                        <span>第三页</span>
+                        <button class="dele">X</button> 
+                    </li>
+                </ul>
+                <button id="add">+</button>
+            </nav>
+    
+            <!-- tab 内容 -->
+            <div class="tabscon">
+                <section class="conative">
+                    <div class="content">第一页</div>
+                </section>
+                <section>
+                    <div class="content">第二页</div>
+                </section>
+                <section>
+                    <div class="content">第三页</div>
+                </section>
+            </div>
         </div>
     </div>
+    <script src="./tab.js"></script>
 </body>
 </html>
