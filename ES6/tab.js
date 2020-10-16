@@ -14,6 +14,7 @@ var that;
     updateNode() {
         this.lis = this.main.querySelectorAll('li');
         this.sections = this.main.querySelectorAll('section');
+        this.contents = this.main.querySelectorAll('.tabscon section div:first-child');
         this.deles = this.main.querySelectorAll('.dele');       //删除按钮也需要更新声明
         this.spans = this.main.querySelectorAll('nav li span:first-child');
     }
@@ -26,7 +27,7 @@ var that;
             this.lis[i].onclick = this.toggleTab;
             this.deles[i].onclick = this.removeTab;
             this.spans[i].ondblclick = this.editTab;
-            this.sections[i].ondblclick = this.editTab;
+            this.contents[i].ondblclick = this.editTab;
         }
     }
     //清除选中状态的css
@@ -81,7 +82,7 @@ var that;
             this.value =='' ? this.value = str : this.parentNode.innerHTML = this.value;
         }
         input.onkeyup = function(e) {
-            if(e.keyCOCde === 13) {
+            if(e.keyCode === 13) {
                 this.blur();
             }
         }  
