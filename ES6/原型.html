@@ -9,24 +9,25 @@
     <script>
         //构造函数中的方法的多次调用浪费内存空间
         //prototype是每个构造函数都有的，便于对象共享此方法以便节省内存空间
-        function Star(uname,uage) {
+        function Star(uname,age) {
             this.uname = uname;             //uname和uage都是实例成员，实例成员需通过对象来访问
-            this.uage = uage;
+            this.age = age;
             // this.sing = function() {
             //     console.log('i can singing');
             // }
         }
-        //将方法用原型写在构造函数外面可以让之后的新建对象共享此方法
+        // 将方法用原型写在构造函数外面可以让之后的新建对象共享此方法
         Star.prototype.sing = function() {
             console.log('i can singing');
         }
-
-        var ldh = new Star(刘德华,18);
-        var zxy = new Star(张学友,20);
-        ldh.sing();
+        var ldh = new Star('刘德华',18);            //此处犯错，字符集需加引号 
+        var zxy = new Star('张学友',20);
+        ldh.sing();             //在对象身上系统自动添加一个__proto__指向我们的原型对象 prototype
+                                //优先查找对象本身有没有此方法，如没有再指向原型对象的方法
         console.log(ldh.uname);
         //不能通过console.log(Star.name)构造函数来访问成员
         Star.sex = 'man';      //此为静态成员，静态成员需通过构造函数来访问
+        console.log(ldh.__proto__.constructor);       //constructor作用于指向原型对象被引用的构造函数
     </script>
 </body>
 </html>
