@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //some 筛选数组
+        //返回值是布尔值(告诉你是或否)
+        //循环到了就停止并返回结果
+        var arr = [10, 30 , 40];
+        // var flag = arr.some(function(value) {
+        //     return value >= 20;
+        // });
+        // console.log(flag);
+
+        //some 由于返回是只是布尔值所以需要在外声明空变量去就收通过判定后的值，而返回时需要return true；
+        var newArr = [];
+        arr.some(function(value) {
+            if(value>20) {
+                newArr.push(value);
+                return true;
+            }
+        })
+        console.log(newArr);
+    </script>
+</body>
+</html>

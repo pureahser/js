@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //filter 筛选数组
+        var arr = [1,2,3];
+        var newArr = arr.filter(function(value,index) {
+            return value <= 2;      //由于返回的是数组所以得声明个变量接收
+        })
+        console.log(newArr);
+    </script>
+</body>
+</html>

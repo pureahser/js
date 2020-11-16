@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //父构造函数
+        function Father(uname,age) {
+            this.uname = uname,
+            this.age = age
+        }
+        Father.prototype.money = function() {
+            console.log('1111');
+        }
+        //子构造函数
+        function Son(uname,age) {
+            Father.call(this, uname, age);
+            //此处借用父构造函数，需要修改this指向子构造函数的参数
+        }
+        // Son.prototype = Father.prototype;直接将父的赋值，导致子修改原型对象父也一起跟着边
+        Son.prototype = new Father();       //将父的实例对象赋值给子就解决了
+        Son.prototype.constructor = Son;        //此处将原型对象指回子构造函数
+        Son.prototype.exam = function() {
+            console.log('ks');
+        }
+        var son = new Son('ldh',18); 
+        console.log(son);
+    </script>
+</body>
+</html>

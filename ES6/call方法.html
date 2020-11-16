@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //call方法
+        function fn(x,y) {
+            console.log('i love figma');
+            console.log(this);
+            console.log(x + y);
+        }
+        var o = {
+            name : 'andy'
+        }
+        //call 可以改变函数this指向 this便指向o对象
+        fn.call(o, 1, 2);           //此数组中第一个作指向引导作用，第二个开始作指向作用
+        
+    </script>
+</body>
+</html>

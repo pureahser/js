@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid #000000;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+        input {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+   <div class="container">
+    <div class="top">
+        <div>
+            <span>按照价格查询:</span>
+            <input type="number" id="least">
+            <span> - </span>
+            <input type="number" id="most">
+            <button id="S1">搜索</button>
+        </div>
+        <div>
+            <span>按照名称查询:</span>
+            <input type="text" id="ID">
+            <button id="S2">搜索</button>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>产品名称</th>
+            <th>价格</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+   </div>
+    <script>
+        //数组形式存放数据
+        var data = [{
+            id: 18473,
+            pname: 'apple',
+            price: 5999
+        }, {
+            id: 12321,
+            pname: 'vivo',
+            price: 2999
+        }, {
+            id: 54352,
+            pname: 'huawei',
+            price: 4999
+        }]
+        //获取相应元素
+        var tbody = document.querySelector('tbody');
+        //渲染数据      此处forEach对象就是data
+        setData(data);
+        function setData(mydata) {
+            mydata.forEach(function (value) {
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>';
+            tbody.appendChild(tr);
+        })
+        }
+        //比大小后渲染
+        var btnS1 = document.querySelector('#S1');
+        var least = document.querySelector('#least');
+        var most = document.querySelector('#most');
+        btnS1.addEventListener('click',function() {
+            tbody.innerHTML = '';
+            var newData1 = data.filter(function (value) {
+                return value.price <= most.value && value.price >= least.value;
+        })
+            setData(newData1);
+        })
+        var btnS2 = document.querySelector('#S2');
+        var ID = document.querySelector('#ID');
+        btnS2.addEventListener('click',function() {
+            tbody.innerHTML = '';
+            console.log(1);
+            var newData2 = [];
+            data.some(function(value) {
+                if( value.pname === ID.value) {
+                    newData2.push(value);
+                    return true;
+                }
+            })
+            setData(newData2);
+        })
+    </script>
+</body>
+
+</html>

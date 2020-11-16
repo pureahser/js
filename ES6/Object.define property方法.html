@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Object.defineProperty() 定义新属性或修改原属性
+        var data = {
+            id: 18473,
+            pname: 'apple',
+            price: 5999
+        };
+        //原来修改方式
+        //data.id = 111;
+        //Object.defineProperty(被修改的数组，修改的数组中的元素，修改方式)
+        //此方法添加后不允许二次修改元素的特性，如修改是否遍历等
+        Object.defineProperty(data, 'price', {
+            value:10001,
+            // enumerable: true
+        })
+        console.log(data);
+        Object.defineProperty(data, 'id', {
+            //不允许修改
+            writable: false
+        })
+        //此方法添加的值默认enumerable: false不允许遍历
+        Object.defineProperty(data, 'address',{
+            value: '上海',
+            writable: false,
+            enumerable: true,
+            //此方法添加的值默认为configurable: false不允许删除该属性
+            configurable: false
+        })
+        console.log(Object.keys(data));
+        data.id = '2';
+    </script>
+</body>
+</html>
