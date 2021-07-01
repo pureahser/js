@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1 普通函数
+        // this 指向window
+        function fn() {
+            console.log('Hello World');
+        };
+        fn(); 或 fn().call;
+        //2 对象的方法
+        // this指向该对象
+        var o = {
+            sayHi : function() {
+                console.log('Fucking BUG');
+            }
+        }
+        o.sayHi();
+        //3 构造函数
+        // this 指向实例对象
+        function Star() {};
+        new Star();
+        //4 绑定事件函数
+        // this指向绑定事件
+        btn.onclick = function() {};
+        点击按钮就能触发事件
+        //5 定时器函数      1秒一次
+        // this指向window
+        setInterval(function() {
+
+        },1000);
+        定时器自动根据设定的时间调用
+        //6 立即执行函数    自动调用
+        // this指向window
+        (function() {
+
+        }) ();
+        两个小括号，前一个里写上要立即执行的函数
+    </script>
+</body>
+</html>

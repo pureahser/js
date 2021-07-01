@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1 call()
+        var o = {
+            number: '11'
+        }
+        function fn(a,b) {
+            console.log(this);
+            console.log(a + b);
+        };
+        fn.call(o,1,2);
+        //call 可以调用函数，同时也可以改变函数this指向
+        //call 可以实现继承
+        function Father(uname,age,sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+        }
+        function Son(uname,age,sex) {
+            //继承父构造函数属性
+            Father.call(this, uname, age, sex);
+            //括号内this代表Son的this指向Father，且执行创建Father这个类的内容
+            //this后面跟的参数是Son的实参，而Son的实参被this调用至Father里的内容中使用
+        }
+        var son = new Son('刘德华', 18, '男');
+        //2 apply()
+        var o = {
+            name: 'andy'
+        };
+        function fn() {
+            console.log(this);
+            console.log(arr);
+        };
+        fn.apply(o, ['11']);
+        //1 也有调用函数 改变函数内部this指向
+        //2 参数必须是数组,拿到的数据格式取决与数组中的数据格式
+        //3 apply主要借助Math的内置对象求最大值
+        var arr =[1,2,3,4,5];
+        var max = Math.max.apply(Math, arr);
+        var min = Math.min.apply(Math, arr);
+        console.log(max, min);
+        //3 bind()
+        //不会调用函数，但能改变指向
+        //返回的是改变this指向之后的新函数
+        //如果有的函数我们不需要立即调用，但是又想改变这个函数的this指向就用bind绑定一下新函数以备使用
+        var o = {
+            name:'andy'
+        };
+        function fn(a,b,c) {
+            console.log(this);
+            console.log(a+b+c);
+        };
+        //将函数绑定给新函数（以此来组合这个类中有参数而那个类中有方法，将他们组合打包给一个新函数）
+        var f = fn.bind(o,1,2,3);
+        f();
+        //此处运行f函数会运行fn中自带的a+b+c，也会运行this指向的o函数里的内容name:'andy'
+    </script>
+</body>
+</html>

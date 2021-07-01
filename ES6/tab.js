@@ -1,8 +1,8 @@
-var that;
+// var that;
     class Tab {
-    constructor(id) {           //此处id实参是 #tab
+    constructor(id) {              //此处id实参是 #tab
         //获取元素
-        that = this;
+        // that = this;
         this.main = document.querySelector(id);
         this.ul = this.main.querySelector('nav ul:first-child');
         this.tabscon = this.main.querySelector('.tabscon');
@@ -21,13 +21,15 @@ var that;
     init() {
         this.updateNode();
         // init 初始化操作，让相关元素绑定事件
-        this.add.onclick = this.addTab;
+        this.add.onclick = this.addTab.bind(this.add,this);
         for(var i = 0; i < this.lis.length; i++) {
             this.lis[i].index = i;      //此处index代表创建li的索引号
-            this.lis[i].onclick = this.toggleTab;
-            this.deles[i].onclick = this.removeTab;
+            this.lis[i].onclick = this.toggleTab.bind(this.lis[i],this);
+            //点击事件的指向还是按钮，但是可以利用bind传递this(constructor)参数给后面有需要指向constructor的事件使用
+            this.deles[i].onclick = this.removeTab.bind(this.deles[i],this);
             this.spans[i].ondblclick = this.editTab;
             this.contents[i].ondblclick = this.editTab;
+            this.lis[0].click();//次数增加功能，点击加tag后选中状态依旧
         }
     }
     //清除选中状态的css
@@ -38,13 +40,13 @@ var that;
         }
     }   
     //1. 切换功能
-    toggleTab() { 
+    toggleTab(that) { 
         that.clearClass();
         this.className = 'liActive';
         that.sections[this.index].className = 'conative';
     }
     //2. 添加功能
-    addTab() {
+    addTab(that) {
         that.clearClass();
         //创建li元素和section元素
         var li = '<li><span>新选项卡</span><button class="dele">X</button></li>'
@@ -55,7 +57,7 @@ var that;
         that.init();            //在添加元素后再重新初始化元素及其绑定事件
     }
     //3. 删除功能
-    removeTab(e) {
+    removeTab(that, e) {
         e.stopPropagation();    //阻止冒泡 防止触发li 的切换点击事件
         var index = this.parentNode.index;
         console.log(index);
