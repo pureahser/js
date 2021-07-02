@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //闭包应用-计算打车价格
+        var car = (function (n) {
+            var start = 13; //起步价
+            var total = 0;  //总价
+            return {
+                price: function(n) {
+                    if(n <=3) {
+                        total = start;
+                    } else {
+                        total = (n - 3)*5 + start;
+                    }
+                    return total;
+                },
+                crowded: function(flag) {
+                    return (flag ? total +10 :total);
+                }
+            }
+        })();
+        console.log(car.price(5));
+        console.log(car.crowded(true));
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //递归函数：函数内部自己调用自己，
+        //由于外部调用后在内部调用会形成死循环，不断开辟内存空间，所以要防止栈溢出
+        var num = 1;
+
+        function fn() {
+            console.log('我要打印'+ num +'句话');
+            if (num == 6) {
+                return;//递归里必须加退出条件
+            }
+            num++;
+            fn();
+        }
+        fn();
+        
+        //递归求1～n的阶乘 1*2*3*4～n
+        function fn(n) {
+            if (n == 1) {
+                return 1;
+            }
+            return n * fn(n - 1);
+        }
+        fn();
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //思考1
+        var name = "The window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function() {
+                return function() {
+                    return this.name;
+                };
+            }
+        };
+
+        console.log(object.getNameFunc()());
+        //步骤拆解
+        //1
+        var f = object.getNameFunc()();
+        //2
+        //此处function=f是匿名函数所以this指向window
+        var f = function() {
+                    return this.name;
+                };
+        f();
+        //3
+        //相当于匿名函数后面跟一个小括号，像立即执行函数，this指向window
+        //无闭包
+        function(){this.name};()
+        
+        //思考2
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function() {
+                var that = this;
+                return function() {
+                    return that.name;
+                };
+            }
+        };
+        console.log(object.getNameFunc()());
+        //步骤拆解
+        //1
+        var f = object.getNameFunc()();
+        //2
+        //
+        var f = function() {
+            return that.name;
+        }
+        f();
+        //3
+        //that=this指向object
+        //这里有闭包
+        function(){that.name}()
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //闭包是有权访问另一个函数作用域中变量的函数
+    //闭包：fun的作用域访问了另一函数fn作用域中的局部变量，fn就是闭包
+    //fn外部的作用域访问fn内部的局部变量
+    //闭包是典型的高阶函数
+    //延伸变量作用范围，本来局部变量在函数执行完就会销毁，但是闭包后会等别的函数执行它后才销毁
+    function fn() {
+        var num = 10;
+        function fun() {
+            console.log(num);
+        }
+        return fun;//此处量fun函数当做fn函数的参数返回
+        //方式2   直接return function(){}
+    }
+    var f = fn();
+    f();
+    //类似
+    // var f = function fun() {
+    //     console.log(num);
+    // }
+    function fn1() {
+        var num = 10;
+        return console.log(num);;
+    }
+    var f1 = fn1();
+    //此处思考何时需要闭包，明明直接return当前函数就能拿到返回值。
+    //当此函数内部有多次不同计算，那么值会受到污染
+    //如果在函数内部将几个计算分为几次闭包，那么在闭包内取到且计算出的值将不会污染闭包外部的原始数据。
+    </script>
+    
+    <!-- 闭包的实际应用 -->
+    <ul class="nav">
+        <li>榴莲</li>
+        <li>臭豆腐</li>
+        <li>鲱鱼罐头</li>
+        <li>大猪蹄子</li>
+    </ul>
+    <script>
+        //闭包应用-点击li输出当前li的索引号
+        //立即执行函数也称为小闭包
+        //闭包可能会导致内存泄漏，如果一直不点击那么数据一直占用内存
+        //1.可以利用动态添加属性的方式
+        var lis = document.querySelector('.nav').querySelectorAll('li');
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].index = i;
+        //     lis[i].onclick = function (){
+        //         console.log(this.index);
+        //         //此处如果用 lis[i].index 则会导致重复，但是如果是this.index则刚好指向当前按的按钮
+        //     }
+        // }
+        //2.可以利用立即执行函数达成
+        //后面的小阔号中可以看作调用函数，把i作为变量传进去
+        for (var i = 0; i < lis.length; i++) {
+            (function (i) {
+                lis[i].onclick = function () {
+                    console.log(i+1);
+                }
+            })(i);
+        }
+        //三秒后打印所有li元素的内容
+        // setTimeout(
+        //     function () {
+        //         for (var i = 0;i < lis.length; i++) {
+        //             (function (i) {
+        //                 console.log(lis[i].innerHtml);
+        //             })(i)
+        //         }
+        //     }
+        // ,3000);//此处犯错3秒后打印li内容，每一个就得一个计时器
+        for (var i =0 ;i < lis.length; i++) {
+            (
+                function (i) {
+                    setTimeout(
+                        function (){
+                            console.log(lis[i].innerHTML);
+                        }
+                    ,3000)
+                }
+            )(i);
+        }
+        
+    </script>
+</body>
+</html>
